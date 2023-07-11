@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.example.blogsaga.R;
 
-
 public class SignupFragment extends Fragment {
 
 

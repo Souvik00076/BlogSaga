@@ -20,6 +20,15 @@
     <dimen name="_2dp">2dp</dimen>
     <dimen name="_5dp">5dp</dimen>
     <dimen name="_12dp">12dp</dimen>
+    <dimen name="widgets_margin_start">16dp</dimen>
+    <dimen name="widgets_margin_end">16dp</dimen>
+    <dimen name="widgets_margin_top">16dp</dimen>
+    <dimen name="widgets_padding">15dp</dimen>
+    <dimen name="widgets_min_height">48dp</dimen>
+    <dimen name="corner_radius">200dp</dimen>
+    <dimen name="widgets_radius">25dp</dimen>
+    <dimen name="text_size">17sp</dimen>
+    <dimen name="layout_margin_bottom">100dp</dimen>
 
 
 </resources>

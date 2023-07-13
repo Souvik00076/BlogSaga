@@ -12,10 +12,10 @@ import com.example.blogsaga.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link login_1#newInstance} factory method to
+ * Use the {@link gets_started#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class login_1 extends Fragment {
+public class gets_started extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class login_1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public login_1() {
+    public gets_started() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class login_1 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment login_1.
+     * @return A new instance of fragment gets_started.
      */
     // TODO: Rename and change types and number of parameters
-    public static login_1 newInstance(String param1, String param2) {
-        login_1 fragment = new login_1();
+    public static gets_started newInstance(String param1, String param2) {
+        gets_started fragment = new gets_started();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class login_1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_1, container, false);
+        return inflater.inflate(R.layout.fragment_gets_started, container, false);
     }
 }

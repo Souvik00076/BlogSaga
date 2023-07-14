@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">BlogSaga</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_hint">john12@email.com</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="confPassword_hint">Confirm Password</string>
 </resources>

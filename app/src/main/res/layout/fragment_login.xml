@@ -28,6 +28,7 @@
             android:id="@+id/login_button"
             android:text="Log in"
             android:background="@drawable/design_widget_et"
+            android:textAllCaps="false"
             style="@style/button_style"
 
             />

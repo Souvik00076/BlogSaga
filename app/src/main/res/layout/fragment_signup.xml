@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SignupFragment">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,25 +16,25 @@
 
 
         <EditText
-            android:id="@+id/email_et"
+            android:id="@+id/txtEmail"
             style="@style/edit_text_style"
             android:hint="@string/email_hint"
             android:drawableLeft="@drawable/baseline_person_24"
         />
         <EditText
-            android:id="@+id/password_et"
+            android:id="@+id/txtPassword"
             style="@style/edit_text_style"
             android:hint="@string/password_hint"
             android:drawableLeft="@drawable/baseline_key_24"
             />
         <EditText
-            android:id="@+id/confPassword_et"
+            android:id="@+id/txtConfirmPassword"
             style="@style/edit_text_style"
             android:hint="@string/confPassword_hint"
             android:paddingStart="@dimen/_52dp"
             />
         <Button
-            android:id="@+id/signup_button"
+            android:id="@+id/btnSignUp"
             android:text="Sign up"
             android:background="@drawable/design_widget_et"
             android:textAllCaps="false"
@@ -41,4 +43,4 @@
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

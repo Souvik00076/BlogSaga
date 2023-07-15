@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".fragments.gets_started">
 
     <LinearLayout
@@ -15,7 +14,7 @@
         >
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/imgLogo"
             style="@style/logo_style"
             android:layout_width="@dimen/_250dp"
             android:layout_gravity="center"
@@ -24,7 +23,7 @@
             android:src="@drawable/logo" />
 
         <TextView
-            android:id="@+id/letsyouin"
+            android:id="@+id/txtLetsYouIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_40sp"
@@ -35,7 +34,7 @@
             android:text="Let's you in" />
 
         <Button
-            android:id="@+id/google"
+            android:id="@+id/btnGoogle"
             style="@style/edit_text_style"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
             android:text="Continue With Google" />
 
         <Button
-            android:id="@+id/github"
+            android:id="@+id/btnGithub"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/google"
@@ -55,7 +54,7 @@
             android:text="Continue With Github" />
 
         <TextView
-            android:id="@+id/or"
+            android:id="@+id/txtOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/github"
@@ -66,7 +65,7 @@
             android:text="OR" />
 
         <Button
-            android:id="@+id/username"
+            android:id="@+id/btnUsername"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/or"
@@ -75,25 +74,36 @@
             android:gravity="center"
             android:text="Continue With Username" />
 
-        <TextView
-            android:id="@+id/dontaccount"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/username"
-            android:layout_marginTop="@dimen/_24dp"
-            android:textSize="@dimen/_19sp"
-            android:fontFamily="@font/oleoscript_regular"
-            android:textColor="@color/black"
-            android:text="Don't Have an Account ?"/>
+            android:layout_marginTop="@dimen/_32dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/txtDontAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/oleoscript_regular"
+                android:textSize="@dimen/_19sp"
+                android:layout_centerVertical="true"
+                android:text="Don't Have an Account ? "
+                />
 
-        <TextView
-            android:id="@+id/signup_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:fontFamily="@font/oleoscript_regular"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_19sp"/>
+            <TextView
+                android:id="@+id/txtSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oleoscript_regular"
+                android:layout_toRightOf="@id/txtDontAccount"
+                android:textSize="@dimen/_19sp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/brown"
+                android:text="Sign Up"
+                />
+        </RelativeLayout>
 
 
     </LinearLayout>

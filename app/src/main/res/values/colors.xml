@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="peach">#FFCCCC</color>
     <color name="brown">#943B3B</color>
+    <color name="trans">#00000000</color>
+
 </resources>

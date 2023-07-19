@@ -31,4 +31,9 @@
         <item name="android:radius">@dimen/_250dp</item>
     </style>
 
+    //circle image
+    <style name="circle">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

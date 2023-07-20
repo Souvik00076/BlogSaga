@@ -8,6 +8,7 @@
 <resources>
     <!--    For Edit Text-->
     <dimen name="_4dp">4dp</dimen>
+    <dimen name="_6dp">6dp</dimen>
     <dimen name="_8dp">8dp</dimen>
     <dimen name="_16dp">16dp</dimen>
     <dimen name="_24dp">24dp</dimen>
@@ -20,10 +21,13 @@
     <dimen name="_52dp">52dp</dimen>
     <dimen name="_64dp">64dp</dimen>
     <dimen name="_78dp">78dp</dimen>
+    <dimen name="_88dp">88dp</dimen>
     <dimen name="_96dp">96dp</dimen>
     <dimen name="_100dp">100dp</dimen>
+    <dimen name="_104dp">104dp</dimen>
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
     <dimen name="_128dp">128dp</dimen>
+    <dimen name="_188dp">188dp</dimen> <!-- For profile pic -->
     <dimen name="_164dp">164dp</dimen>
     <dimen name="_198dp">198dp</dimen>
     <dimen name="_228dp">228dp</dimen>
@@ -47,5 +51,9 @@
     <dimen name="_19sp">19sp</dimen>
     <dimen name="_24sp">24sp</dimen>
     <dimen name="_40sp">40sp</dimen>
+
+    <!-- For margin in Negetive DP-->
+    <dimen name="_N92dp">-92dp</dimen>       <!-- TextView margin Start into profile page -->
+    <dimen name="_N112dp">-112dp</dimen>     <!-- For TextView of the profile page -->
 
 </resources>

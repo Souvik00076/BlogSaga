@@ -21,7 +21,7 @@
         <item name="android:textColor">@color/brown</item>
         <item name="cornerRadius">@dimen/_24dp</item>
         <item name="fontFamily">@font/oleoscript_regular</item>
-        <item name="android:layout_marginTop">@dimen/_52dp</item>
+        <item name="android:layout_marginTop">@dimen/_48dp</item>
         <item name="android:textSize">@dimen/_19sp</item>
         <item name="android:textStyle">bold</item>
     </style>

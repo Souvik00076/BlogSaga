@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.edit_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/back_app">
     
 
@@ -39,11 +39,11 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_pic"
-        android:layout_width="@dimen/_198dp"
-        android:layout_height="@dimen/_198dp"
+        android:layout_width="@dimen/_188dp"
+        android:layout_height="@dimen/_188dp"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/circle"
-        android:layout_marginTop="@dimen/_112dp"
+        android:layout_marginTop="@dimen/_88dp"
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/dp"
         />
@@ -58,10 +58,11 @@
         android:layout_marginEnd="-5dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/baseline_camera_alt_24"
-        app:maxImageSize="@dimen/_32dp" />
+        app:maxImageSize="@dimen/_32dp"
+        app:elevation="@dimen/_8dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/profile_pic"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -71,11 +72,10 @@
             android:id="@+id/name_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/change_profile_button"
-            android:layout_marginStart="-112dp"
+            android:layout_marginStart="@dimen/_N112dp"
             android:layout_marginTop="@dimen/_8dp"
             android:fontFamily="@font/oleoscript_bold"
-            android:text="Name"
+            android:text="@string/txtName"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"/>
         />
@@ -83,20 +83,18 @@
         <EditText
             android:id="@+id/name"
             style="@style/edit_text_style"
-            android:layout_below="@+id/name_section"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_8dp" />
+            android:layout_marginTop="@dimen/_6dp" />
 
 
         <TextView
             android:id="@+id/email_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/change_profile_button"
-            android:layout_marginStart="-112dp"
-            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginStart="@dimen/_N112dp"
+            android:layout_marginTop="@dimen/_6dp"
             android:fontFamily="@font/oleoscript_bold"
-            android:text="Email"
+            android:text="@string/txtEmail"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"/>
         />
@@ -104,20 +102,18 @@
         <EditText
             android:id="@+id/email"
             style="@style/edit_text_style"
-            android:layout_below="@+id/name_section"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_8dp" />
+            android:layout_marginTop="@dimen/_6dp" />
 
 
         <TextView
             android:id="@+id/phone_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/change_profile_button"
             android:layout_marginStart="-112dp"
-            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_6dp"
             android:fontFamily="@font/oleoscript_bold"
-            android:text="Phone"
+            android:text="@string/txtPhone"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"/>
         />
@@ -125,20 +121,19 @@
         <EditText
             android:id="@+id/phone"
             style="@style/edit_text_style"
-            android:layout_below="@+id/name_section"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_8dp" />
+            android:layout_marginTop="@dimen/_6dp"
+            />
 
 
         <TextView
             android:id="@+id/country_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/change_profile_button"
             android:layout_marginStart="-112dp"
-            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_6dp"
             android:fontFamily="@font/oleoscript_bold"
-            android:text="Country"
+            android:text="@string/txtCountry"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"/>
         />
@@ -146,11 +141,10 @@
         <EditText
             android:id="@+id/country"
             style="@style/edit_text_style"
-            android:layout_below="@+id/name_section"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_8dp"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_down_24"
-            android:paddingRight="@dimen/_12dp"
+            android:layout_marginTop="@dimen/_6dp"
+            android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
+            android:paddingEnd="@dimen/_12dp"
             />
 
 
@@ -158,11 +152,10 @@
             android:id="@+id/DOB_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/change_profile_button"
-            android:layout_marginStart="-92dp"
-            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginStart="@dimen/_N92dp"
+            android:layout_marginTop="@dimen/_6dp"
             android:fontFamily="@font/oleoscript_bold"
-            android:text="Date of Birth"
+            android:text="@string/txtDOB"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"/>
         />
@@ -170,22 +163,20 @@
         <EditText
             android:id="@+id/DOB"
             style="@style/edit_text_style"
-            android:layout_below="@+id/name_section"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_8dp"
-            android:drawableRight="@drawable/baseline_date_range_24"
-            android:paddingRight="@dimen/_12dp"
+            android:layout_marginTop="@dimen/_6dp"
+            android:drawableEnd="@drawable/baseline_date_range_24"
+            android:paddingEnd="@dimen/_12dp"
             />
 
         <Button
             android:id="@+id/logout_btn"
             style="@style/button_style"
-            android:text="Log out"
+            android:text="@string/btnLogOut"
             android:background="@drawable/design_widget_et"
             android:layout_marginBottom="@dimen/_12dp"
+            android:textAllCaps="false"
             />
     </LinearLayout>
-
-
 
 </RelativeLayout>

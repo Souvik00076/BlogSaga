@@ -22,7 +22,7 @@
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:text="@string/profile"
         android:fontFamily="@font/oleoscript_bold"
         android:textSize="@dimen/_24sp"
         android:textColor="@color/black"
@@ -44,6 +44,8 @@
         android:src="@drawable/dp"
         android:layout_marginTop="@dimen/_12dp"
         />
+
+    <!-- Here(below) username, number of Articles, Following, Followers should be change according to different users -->
 
     <TextView
         android:id="@+id/User_name"
@@ -81,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="@string/edit"
             android:textColor="@color/brown"
             android:fontFamily="@font/oleoscript_bold"
             android:textSize="@dimen/_19sp"/>
@@ -103,8 +105,7 @@
         android:layout_below="@+id/horizontal_part1"
         android:layout_width="@dimen/_450dp"
         android:layout_height="@dimen/_100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         >
         <!--Articles section-->
         <TextView
@@ -125,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_no"
             android:layout_alignParentStart="true"
-            android:text="Articles"
+            android:text="@string/articles"
             android:fontFamily="@font/oleoscript_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"
@@ -158,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/following_no"
             android:layout_toEndOf="@+id/vertical_part1"
-            android:text="Following"
+            android:text="@string/following"
             android:fontFamily="@font/oleoscript_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"
@@ -191,7 +192,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/following_no"
             android:layout_toEndOf="@+id/vertical_part2"
-            android:text="Follower"
+            android:text="@string/followers"
             android:fontFamily="@font/oleoscript_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/_19sp"
@@ -213,7 +214,7 @@
         android:id="@+id/drafts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drafts"
+        android:text="@string/drafts"
         android:fontFamily="@font/oleoscript_bold"
         android:textSize="@dimen/_24sp"
         android:textColor="@color/black"
@@ -226,7 +227,7 @@
         android:id="@+id/published"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Published"
+        android:text="@string/published"
         android:fontFamily="@font/oleoscript_bold"
         android:textSize="@dimen/_24sp"
         android:layout_alignParentEnd="true"

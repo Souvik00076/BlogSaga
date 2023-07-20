@@ -13,7 +13,7 @@
         android:orientation="vertical"
         >
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgLogo"
             style="@style/logo_style"
             android:layout_width="@dimen/_250dp"
@@ -27,55 +27,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_40sp"
-            android:layout_below="@+id/logo"
             android:fontFamily="@font/oleoscript_bold"
             android:textColor="@color/black"
             android:layout_marginBottom="@dimen/_16dp"
-            android:text="Let's you in" />
+            android:text="@string/LetsYouIn" />
 
         <Button
             android:id="@+id/btnGoogle"
             style="@style/edit_text_style"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
-            android:gravity=""
-            android:layout_below="@+id/letsyouin"
+            android:gravity="center_vertical"
             android:drawableStart="@drawable/google"
-            android:text="Continue With Google" />
+            android:text="@string/withGoogle" />
 
         <Button
             android:id="@+id/btnGithub"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/google"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:drawableStart="@drawable/github"
             style="@style/edit_text_style"
-            android:text="Continue With Github" />
+            android:text="@string/withGitHub" />
 
         <TextView
             android:id="@+id/txtOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/github"
             android:textSize="@dimen/_19sp"
             android:fontFamily="@font/oleoscript_regular"
             android:textColor="@color/black"
-            android:layout_marginTop="24dp"
-            android:text="OR" />
+            android:layout_marginTop="@dimen/_24dp"
+            android:text="@string/or" />
 
         <Button
             android:id="@+id/btnUsername"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/or"
             android:layout_marginTop="@dimen/_24dp"
             style="@style/edit_text_style"
             android:gravity="center"
-            android:text="Continue With Username" />
+            android:text="@string/withUserName" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32dp"
             android:orientation="horizontal"
@@ -89,7 +84,7 @@
                 android:fontFamily="@font/oleoscript_regular"
                 android:textSize="@dimen/_19sp"
                 android:layout_centerVertical="true"
-                android:text="Don't Have an Account ? "
+                android:text="@string/dontHaveAccount"
                 />
 
             <TextView
@@ -97,11 +92,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/oleoscript_regular"
-                android:layout_toRightOf="@id/txtDontAccount"
+                android:layout_toEndOf="@id/txtDontAccount"
                 android:textSize="@dimen/_19sp"
                 android:layout_centerVertical="true"
                 android:textColor="@color/brown"
-                android:text="Sign Up"
+                android:text="@string/SignUp"
                 />
         </RelativeLayout>
 

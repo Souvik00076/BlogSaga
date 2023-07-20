@@ -15,6 +15,7 @@
     <dimen name="_32dp">32dp</dimen>
     <dimen name="_36dp">36dp</dimen>
     <dimen name="_40dp">40dp</dimen>
+    <dimen name="_44dp">44dp</dimen>
     <dimen name="_48dp">48dp</dimen>
     <dimen name="_52dp">52dp</dimen>
     <dimen name="_64dp">64dp</dimen>
@@ -28,8 +29,11 @@
     <dimen name="_228dp">228dp</dimen>
     <dimen name="_250dp">250dp</dimen>
     <dimen name="_297dp">297dp</dimen>
+    <dimen name="_328dp">328dp</dimen>
     <dimen name="_356dp">356dp</dimen>
     <dimen name="_450dp">450dp</dimen>
+
+    <dimen name="_680dp">680dp</dimen>
 
     <!--    For Padding-->
     <dimen name="_1dp">1dp</dimen>

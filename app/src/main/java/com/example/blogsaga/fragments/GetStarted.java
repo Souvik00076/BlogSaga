@@ -12,10 +12,10 @@ import com.example.blogsaga.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link edit_profile#newInstance} factory method to
+ * Use the {@link GetStarted#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class edit_profile extends Fragment {
+public class GetStarted extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class edit_profile extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public edit_profile() {
+    public GetStarted() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class edit_profile extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment edit_profile.
+     * @return A new instance of fragment gets_started.
      */
     // TODO: Rename and change types and number of parameters
-    public static edit_profile newInstance(String param1, String param2) {
-        edit_profile fragment = new edit_profile();
+    public static GetStarted newInstance(String param1, String param2) {
+        GetStarted fragment = new GetStarted();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class edit_profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_profile, container, false);
+        return inflater.inflate(R.layout.fragment_gets_started, container, false);
     }
 }

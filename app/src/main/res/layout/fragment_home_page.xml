@@ -58,159 +58,104 @@
             android:layout_marginTop="@dimen/_140dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/art">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/fashion">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/travel">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/fashion">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/food">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/fitness">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/tech">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/geo_politics">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="218dp"
-                    android:layout_height="89dp"
-                    android:layout_margin="15dp">
+                    style="@style/cardView_style">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/cardView_linear_layout_style"
                         android:background="@drawable/extra">
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-
 
             </LinearLayout>
 
         </HorizontalScrollView>
 
-
     </RelativeLayout>
+
 </RelativeLayout>

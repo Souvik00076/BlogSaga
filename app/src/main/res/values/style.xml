@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+=======
     <style name="edit_text_style">
         <item name="android:layout_width">@dimen/_328dp</item>
         <item name="android:layout_height">@dimen/_48dp</item>
@@ -26,13 +29,19 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+<<<<<<< HEAD
+=======
     <style name="logo_style">
         <item name="android:radius">@dimen/_250dp</item>
     </style>
 
+<<<<<<< HEAD
+>>>>>>> f561370f2f2568c4586605cc2ffe2fb08704c465
+=======
     //circle image
     <style name="circle">
         <item name="cornerSize">50%</item>
     </style>
 
+>>>>>>> efd217764bb765775775ac8171b7a8b8608e814f
 </resources>

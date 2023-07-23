@@ -22,6 +22,7 @@
     <dimen name="_96dp">96dp</dimen>
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
     <dimen name="_128dp">128dp</dimen>
+    <dimen name="_140dp">140dp</dimen>
     <dimen name="_164dp">164dp</dimen>
     <dimen name="_198dp">198dp</dimen>
     <dimen name="_228dp">228dp</dimen>

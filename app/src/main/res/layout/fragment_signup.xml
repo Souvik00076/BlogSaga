@@ -5,12 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SignupFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@drawable/login_signup_00"
         android:orientation="vertical">
+
+
+
+
 
         <EditText
             android:id="@+id/email_et"

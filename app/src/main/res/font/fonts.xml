@@ -12,6 +12,16 @@
             <font-style>normal</font-style>
             <font-weight>bold</font-weight>
         </font>
+
+
     </fonts>
+    <name>odormeanchey</name>
+    <fonts>
+        <font-name>oleoscript_regular.ttf</font-name>
+        <font-style>normal</font-style>
+        <font-weight>normal</font-weight>
+
+    </fonts>
+
     <default>oleoscript_regular.ttf</default>
 </font-family>

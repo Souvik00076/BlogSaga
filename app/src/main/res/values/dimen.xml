@@ -27,11 +27,9 @@
     <dimen name="_104dp">104dp</dimen>
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
     <dimen name="_128dp">128dp</dimen>
-<<<<<<< HEAD
     <dimen name="_140dp">140dp</dimen>
-=======
-    <dimen name="_188dp">188dp</dimen> <!-- For profile pic -->
->>>>>>> efd217764bb765775775ac8171b7a8b8608e814f
+
+    <dimen name="_188dp">188dp</dimen>
     <dimen name="_164dp">164dp</dimen>
     <dimen name="_198dp">198dp</dimen>
     <dimen name="_228dp">228dp</dimen>

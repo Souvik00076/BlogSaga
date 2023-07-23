@@ -1,4 +1,4 @@
-package com.example.blogsaga.utils.models;
+package com.example.blogsaga.models;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

@@ -27,7 +27,11 @@
     <dimen name="_104dp">104dp</dimen>
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
     <dimen name="_128dp">128dp</dimen>
+<<<<<<< HEAD
+    <dimen name="_140dp">140dp</dimen>
+=======
     <dimen name="_188dp">188dp</dimen> <!-- For profile pic -->
+>>>>>>> efd217764bb765775775ac8171b7a8b8608e814f
     <dimen name="_164dp">164dp</dimen>
     <dimen name="_198dp">198dp</dimen>
     <dimen name="_228dp">228dp</dimen>
@@ -45,6 +49,15 @@
     <dimen name="_3dp">3dp</dimen>
     <dimen name="_5dp">5dp</dimen>
     <dimen name="_12dp">12dp</dimen>
+    <dimen name="widgets_margin_start">16dp</dimen>
+    <dimen name="widgets_margin_end">16dp</dimen>
+    <dimen name="widgets_margin_top">16dp</dimen>
+    <dimen name="widgets_padding">15dp</dimen>
+    <dimen name="widgets_min_height">48dp</dimen>
+    <dimen name="corner_radius">200dp</dimen>
+    <dimen name="widgets_radius">25dp</dimen>
+    <dimen name="text_size">17sp</dimen>
+    <dimen name="layout_margin_bottom">100dp</dimen>
 
     <!--for text size-->
     <dimen name="_17sp">17sp</dimen>

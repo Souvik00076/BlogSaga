@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.LoginFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SignupFragment">
+    android:gravity="center"
+    android:background="@drawable/login_signup_00"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:background="@drawable/login_signup_00"
-        android:orientation="vertical">
+   <LinearLayout
+       android:layout_width="@dimen/_356dp"
+       android:layout_height="@dimen/_680dp"
+       android:layout_marginTop="@dimen/_64dp"
+       android:gravity="center"
+       android:layout_marginBottom="@dimen/_32dp"
+       android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/email_et"
-            style="@style/edit_text_style"
-            android:hint="@string/email_hint"
-            android:drawableLeft="@drawable/baseline_person_24"
-            />
-        <EditText
-            android:id="@+id/password_et"
-            style="@style/edit_text_style"
-            android:hint="@string/password_hint"
-            android:drawableLeft="@drawable/baseline_key_24"
-            />
-        <Button
-            android:id="@+id/login_button"
-            android:text="Log in"
-            android:background="@drawable/design_widget_et"
-            android:textAllCaps="false"
-            style="@style/button_style"
+           <EditText
+               android:id="@+id/txtEmail"
+               style="@style/edit_text_style"
+               android:hint="@string/email_hint"
+               android:drawableLeft="@drawable/baseline_person_24" />
+           <EditText
+               android:id="@+id/txtPassword"
+               style="@style/edit_text_style"
+               android:hint="@string/password_hint"
+               android:drawableLeft="@drawable/baseline_key_24" />
+           <Button
+               android:id="@+id/btnLogin"
+               android:text="@string/btnLogin"
+               android:background="@drawable/design_widget_et"
+               android:textAllCaps="false"
+               style="@style/button_style" />
 
-            />
-    </LinearLayout>
+   </LinearLayout>
 
-
-</FrameLayout>
+</RelativeLayout>

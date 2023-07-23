@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+<<<<<<< HEAD
  
+=======
+<corners android:radius="@dimen/_250dp"/>
+    <solid android:color="@color/peach"/>
+
+
+>>>>>>> efd217764bb765775775ac8171b7a8b8608e814f
 </shape>

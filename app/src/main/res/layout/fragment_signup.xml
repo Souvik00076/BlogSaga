@@ -32,6 +32,7 @@
             android:layout_marginTop="@dimen/_N100dp"
             android:layout_marginEnd="@dimen/_N52dp"
             android:backgroundTint="@color/white"
+            style="@style/circle"
             android:src="@drawable/baseline_camera_alt_24"
             app:maxImageSize="@dimen/_32dp" />
 

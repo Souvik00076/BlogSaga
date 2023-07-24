@@ -32,7 +32,7 @@
             android:layout_marginBottom="@dimen/_16dp"
             android:text="@string/LetsYouIn" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGoogle"
             style="@style/edit_text_style"
             android:layout_width="@dimen/_356dp"
@@ -41,7 +41,7 @@
             android:drawableStart="@drawable/google"
             android:text="@string/withGoogle" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGithub"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_marginTop="@dimen/_24dp"
             android:text="@string/or" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnUsername"
             android:layout_width="@dimen/_356dp"
             android:layout_height="wrap_content"

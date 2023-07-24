@@ -4,8 +4,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -66,6 +70,23 @@ public class SignupFragment extends Fragment {
                 Bitmap dpMap = ((BitmapDrawable) drawable).getBitmap();
                 UserToken user = new UserToken(email, password, dpMap);
                 GeneralFirebaseUtiliities.registerUser(user, callbacks);
+            }
+        });
+        ActivityResultLauncher<String> imageSelectionLauncher = registerForActivityResult(
+                new ActivityResultContracts.GetContent(),
+                new ActivityResultCallback<Uri>() {
+                    @Override
+                    public void onActivityResult(Uri result) {
+                        if (result != null) {
+                            dpView.setImageURI(result);
+                        }
+                    }
+                }
+        );
+        clickImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageSelectionLauncher.launch("image/*");
             }
         });
         return root;

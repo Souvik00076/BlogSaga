@@ -32,6 +32,7 @@ public class GeneralFirebaseUtiliities {
                         if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
                             if (user != null) {
+                                Log.i("Create User ","Completed");
                                 sendVerificationEmail(user, token, callbacks);
                                 return;
                             }
@@ -46,7 +47,8 @@ public class GeneralFirebaseUtiliities {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    callbacks.onLoaded(true, -1);
+                    Log.i("Send verfication mail","Completed");
+                    uploadUser(token, callbacks);
                     return;
                 }
                 callbacks.onLoaded(false, 106);
@@ -79,10 +81,11 @@ public class GeneralFirebaseUtiliities {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            Log.i("Upload At Real time"," Completed");
                             callbacks.onLoaded(true, -1);
-                            return;
+                            return ;
                         }
-                        //callbacks.getSignupFlag(true, 103);
+                         callbacks.onLoaded(true, 103);
                     }
                 });
             }

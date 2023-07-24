@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,7 @@ public class SignupFragment extends Fragment {
                         confPasswordEt.getText().toString()};
                 int errorCode = GeneralUtilities.verificationUtils(data);
                 if (errorCode != -1) {
-                    Toast.makeText(requireActivity(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Drawable drawable = dpView.getDrawable();
@@ -103,11 +104,12 @@ public class SignupFragment extends Fragment {
         callbacks = new GeneralCallbacks() {
             @Override
             public void onLoaded(boolean flag, int errorCode) {
+
                 if (flag) {
                     activity.addFragment(new LoginFragment());
                     return;
                 }
-                Toast.makeText(requireActivity(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();
             }
         };
     }

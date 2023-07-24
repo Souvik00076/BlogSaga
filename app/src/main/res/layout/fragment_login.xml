@@ -17,17 +17,17 @@
        android:orientation="vertical">
 
            <EditText
-               android:id="@+id/txtEmail"
+               android:id="@+id/txt_email"
                style="@style/edit_text_style"
                android:hint="@string/email_hint"
                android:drawableLeft="@drawable/baseline_person_24" />
            <EditText
-               android:id="@+id/txtPassword"
+               android:id="@+id/txt_password"
                style="@style/edit_text_style"
                android:hint="@string/password_hint"
                android:drawableLeft="@drawable/baseline_key_24" />
            <Button
-               android:id="@+id/btnLogin"
+               android:id="@+id/btn_login"
                android:text="@string/btnLogin"
                android:background="@drawable/design_widget_et"
                android:textAllCaps="false"

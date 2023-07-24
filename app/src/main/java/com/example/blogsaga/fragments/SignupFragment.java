@@ -103,13 +103,18 @@ public class SignupFragment extends Fragment {
         signUpButton = root.findViewById(R.id.btn_sign_up);
         callbacks = new GeneralCallbacks() {
             @Override
-            public void onLoaded(boolean flag, int errorCode) {
+            public void onSignUp(boolean flag, int errorCode) {
 
                 if (flag) {
                     activity.addFragment(new LoginFragment());
                     return;
                 }
                 Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLogin(boolean flag, int errorCode) {
+
             }
         };
     }

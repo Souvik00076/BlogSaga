@@ -32,12 +32,12 @@ public class GeneralFirebaseUtiliities {
                         if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
                             if (user != null) {
-                                Log.i("Create User ","Completed");
+                                Log.i("Create User ", "Completed");
                                 sendVerificationEmail(user, token, callbacks);
                                 return;
                             }
                         }
-                        callbacks.onLoaded(false, 102);
+                        callbacks.onSignUp(false, 102);
                     }
                 });
     }
@@ -47,11 +47,11 @@ public class GeneralFirebaseUtiliities {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Log.i("Send verfication mail","Completed");
+                    Log.i("Send verfication mail", "Completed");
                     uploadUser(token, callbacks);
                     return;
                 }
-                callbacks.onLoaded(false, 106);
+                callbacks.onSignUp(false, 106);
             }
         });
     }
@@ -81,15 +81,43 @@ public class GeneralFirebaseUtiliities {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Log.i("Upload At Real time"," Completed");
-                            callbacks.onLoaded(true, -1);
-                            return ;
+                            Log.i("Upload At Real time", " Completed");
+                            callbacks.onSignUp(true, -1);
+                            return;
                         }
-                         callbacks.onLoaded(true, 103);
+                        callbacks.onSignUp(true, 103);
                     }
                 });
             }
         });
 
+    }
+
+    public static void loginUser(final UserToken token, GeneralCallbacks callbacks) {
+        user.getAuth().signInWithEmailAndPassword(token.getEmail(), token.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.i("login User", "successfull ");
+                    FirebaseUser firebaseUser = user.getAuth().getCurrentUser();
+                    if (firebaseUser != null && firebaseUser.isEmailVerified()) {
+                        callbacks.onLogin(true, -1);
+                        return;
+                    }
+                    if (firebaseUser != null && !firebaseUser.isEmailVerified()) {
+                        firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isComplete())
+                                    callbacks.onLogin(false, 104);
+                                else
+                                    callbacks.onLogin(false, 106);
+                            }
+                        });
+                    }
+                }
+                callbacks.onLogin(false, 102);
+            }
+        });
     }
 }

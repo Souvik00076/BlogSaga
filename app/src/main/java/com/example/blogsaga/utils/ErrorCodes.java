@@ -10,7 +10,7 @@ public class ErrorCodes {
     private ErrorCodes() {
         map = new HashMap<>();
         map.put(101, "Email Not Send!!");
-        map.put(102, "Something wrong happened while signing up");
+        map.put(102, "Something wrong happened!!!");
         map.put(103, "Network Interrupted");
         map.put(18, "Invalid Email");
         map.put(19, "Passwords do not match");

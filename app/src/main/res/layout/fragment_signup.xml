@@ -29,8 +29,8 @@
             android:id="@+id/change_profile_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp"
-            android:layout_marginEnd="-52dp"
+            android:layout_marginTop="@dimen/_N100dp"
+            android:layout_marginEnd="@dimen/_N52dp"
             android:backgroundTint="@color/white"
             android:src="@drawable/baseline_camera_alt_24"
             app:maxImageSize="@dimen/_32dp" />
@@ -54,7 +54,7 @@
             android:hint="@string/confPassword_hint"
             android:paddingStart="@dimen/_52dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
             style="@style/button_style"
             android:background="@drawable/design_widget_et"

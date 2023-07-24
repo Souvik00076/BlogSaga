@@ -7,7 +7,7 @@
     <string name="password_hint">Enter Password</string>
     <string name="confPassword_hint">Confirm Password</string>
     <string name="btnLogin">Log in</string>
-    <string name="btnSignUp">Sing up</string>
+    <string name="btnSignUp">Sign up</string>
 
 
     <!-- For get started page -->

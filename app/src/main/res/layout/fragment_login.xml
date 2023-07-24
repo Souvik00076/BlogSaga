@@ -26,7 +26,7 @@
                style="@style/edit_text_style"
                android:hint="@string/password_hint"
                android:drawableLeft="@drawable/baseline_key_24" />
-           <Button
+           <androidx.appcompat.widget.AppCompatButton
                android:id="@+id/btn_login"
                android:text="@string/btnLogin"
                android:background="@drawable/design_widget_et"

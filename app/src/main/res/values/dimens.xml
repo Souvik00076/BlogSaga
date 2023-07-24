@@ -66,6 +66,8 @@
     <dimen name="_40sp">40sp</dimen>
 
     <!-- For margin in Negetive DP-->
+    <dimen name="_N52dp">-52dp</dimen>
+    <dimen name="_N100dp">-100dp</dimen>
     <dimen name="_N92dp">-92dp</dimen>       <!-- TextView margin Start into profile page -->
     <dimen name="_N112dp">-112dp</dimen>     <!-- For TextView of the profile page -->
 

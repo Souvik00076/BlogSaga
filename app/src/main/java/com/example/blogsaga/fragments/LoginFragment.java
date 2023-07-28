@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.blogsaga.MainActivity;
 import com.example.blogsaga.R;
-import com.example.blogsaga.models.UserToken;
+import com.example.blogsaga.utils.models.UserToken;
 import com.example.blogsaga.utils.ErrorCodes;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
 
@@ -71,7 +71,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onLogin(boolean flag, int errorCode) {
                 if (flag) {
-                    activity.addFragment(new home_page());
+                    activity.addFragment(new HomePage());
                     return;
                 }
                 Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();

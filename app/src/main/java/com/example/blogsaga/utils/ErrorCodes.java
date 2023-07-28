@@ -25,6 +25,4 @@ public class ErrorCodes {
         if (errorCodes == null) errorCodes = new ErrorCodes();
         return errorCodes.map;
     }
-
-
 }

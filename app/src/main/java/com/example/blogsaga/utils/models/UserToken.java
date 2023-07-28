@@ -1,4 +1,4 @@
-package com.example.blogsaga.models;
+package com.example.blogsaga.utils.models;
 
 import android.graphics.Bitmap;
 

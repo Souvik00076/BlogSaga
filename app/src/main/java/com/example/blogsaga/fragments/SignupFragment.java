@@ -14,26 +14,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.blogsaga.MainActivity;
 import com.example.blogsaga.R;
-import com.example.blogsaga.models.UserToken;
+import com.example.blogsaga.utils.models.UserToken;
 import com.example.blogsaga.utils.ErrorCodes;
 import com.example.blogsaga.utils.FirebaseUtilities.GeneralFirebaseUtiliities;
 import com.example.blogsaga.utils.GeneralUtilities;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
-
-import java.util.ArrayList;
 
 public class SignupFragment extends Fragment {
     private ShapeableImageView dpView;

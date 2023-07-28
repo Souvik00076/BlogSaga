@@ -29,9 +29,9 @@
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
     <dimen name="_128dp">128dp</dimen>
     <dimen name="_140dp">140dp</dimen>
-
-    <dimen name="_188dp">188dp</dimen>
     <dimen name="_164dp">164dp</dimen>
+    <dimen name="_170dp">170dp</dimen>
+    <dimen name="_188dp">188dp</dimen>
     <dimen name="_198dp">198dp</dimen>
     <dimen name="_218dp">218dp</dimen>
     <dimen name="_228dp">228dp</dimen>
@@ -60,6 +60,9 @@
     <dimen name="layout_margin_bottom">100dp</dimen>
 
     <!--for text size-->
+    <dimen name="_9sp">9sp</dimen>
+    <dimen name="_11sp">11sp</dimen>
+    <dimen name="_16sp">16sp</dimen>
     <dimen name="_17sp">17sp</dimen>
     <dimen name="_19sp">19sp</dimen>
     <dimen name="_24sp">24sp</dimen>

@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -37,7 +38,7 @@ import java.util.ArrayList;
 
 public class SignupFragment extends Fragment {
     private ShapeableImageView dpView;
-    private FloatingActionButton clickImageButton;
+    private AppCompatButton clickImageButton;
     private EditText emailEt, passwordEt, confPasswordEt;
     private Button signUpButton;
     private GeneralCallbacks callbacks;

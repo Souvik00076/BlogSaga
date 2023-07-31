@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/create_background"
+    tools:context=".fragments.CreatePage">
+
+    <ImageView
+        android:id="@+id/corss"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="@dimen/_24dp"
+        android:layout_marginTop="@dimen/_32dp"
+        android:src="@drawable/cross" />
+
+    <TextView
+        android:id="@+id/create"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginTop="22dp"
+        android:layout_toEndOf="@+id/corss"
+        android:fontFamily="@font/oleoscript_bold"
+        android:text="Create"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/button_style_crate_page"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/publish"
+        android:background="@drawable/design_widget_et"
+        android:text="Save"
+        android:textAllCaps="false" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/publish"
+        style="@style/button_style_crate_page"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/design_widget_et"
+        android:text="Publish"
+        android:textAllCaps="false" />
+
+    <ScrollView
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="700dp">
+
+            <!-- For insert image -->
+            <LinearLayout
+                android:id="@+id/img_insert"
+                android:layout_width="@dimen/_356dp"
+                android:layout_height="@dimen/_228dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_28dp"
+                android:background="@drawable/widgets_create_img"
+                android:elevation="@dimen/_12dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:src="@drawable/gallery" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oleoscript_bold"
+                    android:text="Add article cover page"
+                    android:textSize="@dimen/_19sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_insert"
+                android:layout_alignStart="@+id/img_insert"
+                android:layout_marginTop="@dimen/_12dp"
+                android:fontFamily="@font/oleoscript_bold"
+                android:text="Title"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/article_title_et"
+                style="@style/article_title_et"
+                android:layout_below="@+id/title"
+                android:layout_centerHorizontal="true"
+                android:elevation="@dimen/_12dp"
+                android:hint="Article Title"
+                android:singleLine="true"
+                android:textColorHint="@color/light_black" />
+
+
+            <TextView
+                android:id="@+id/article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/article_title_et"
+                android:layout_alignStart="@+id/article_title_et"
+                android:layout_marginTop="@dimen/_12dp"
+                android:fontFamily="@font/oleoscript_bold"
+                android:text="Articles"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:id="@+id/button_sv"
+                android:layout_width="@dimen/_356dp"
+                android:layout_height="@dimen/_48dp"
+                android:layout_below="@+id/article"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/widgets_create_img"
+                android:elevation="@dimen/_12dp">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48dp"
+                    android:layout_marginStart="@dimen/_2dp"
+                    android:layout_marginEnd="@dimen/_2dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_48dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageButton
+                            android:id="@+id/left_align"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/align_left" />
+
+                        <ImageButton
+                            android:id="@+id/justify_center"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/align_center" />
+
+
+                        <ImageButton
+                            android:id="@+id/right_align"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/align_right" />
+
+                        <ImageButton
+                            android:id="@+id/add_image"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/gallery" />
+
+                        <ImageButton
+                            android:id="@+id/add_link"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/link" />
+
+                        <ImageButton
+                            android:id="@+id/text_increase"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/baseline_text_increase_24" />
+
+                        <ImageButton
+                            android:id="@+id/text_decrease"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/text_decrease" />
+
+                        <ImageButton
+                            android:id="@+id/text_bold"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/format_bold" />
+
+                        <ImageButton
+                            android:id="@+id/text_italic"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/format_italic" />
+
+                        <ImageButton
+                            android:id="@+id/text_underline"
+                            style="@style/img_sv_btn"
+                            android:src="@drawable/underlined" />
+
+                        <ImageButton
+                            android:id="@+id/voice"
+                            style="@style/img_sv_btn"
+                            android:padding="10dp"
+                            android:src="@drawable/frequency" />
+
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/writing_text_et"
+                android:layout_width="@dimen/_356dp"
+                android:layout_height="@dimen/_100dp"
+                android:background="@drawable/widgets_create_img"
+                android:fontFamily="@font/oleoscript_regular"
+                android:hint="Write your article here..."
+                android:paddingStart="@dimen/_8dp"
+                android:paddingEnd="@dimen/_8dp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/button_sv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8dp"
+                android:elevation="@dimen/_12dp"
+                android:textColorHint="@color/light_black" />
+
+            <Spinner
+                android:id="@+id/topic_dropdown"
+                style="@style/article_title_et"
+                android:elevation="@dimen/_12dp"
+                android:hint="Article Title"
+                android:textColorHint="@color/light_black"
+                android:layout_below="@+id/writing_text_et"
+                android:layout_centerHorizontal="true"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

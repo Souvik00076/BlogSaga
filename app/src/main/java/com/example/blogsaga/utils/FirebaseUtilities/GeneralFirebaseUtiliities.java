@@ -6,8 +6,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
-import com.example.blogsaga.models.User;
-import com.example.blogsaga.models.UserToken;
+import com.example.blogsaga.utils.models.User;
+import com.example.blogsaga.utils.models.UserToken;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

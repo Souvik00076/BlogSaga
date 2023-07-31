@@ -30,9 +30,14 @@
     <dimen name="_123dp">123dp</dimen>
     <dimen name="_128dp">128dp</dimen>
     <dimen name="_140dp">140dp</dimen>
+<<<<<<< HEAD
     <dimen name="_158dp">158dp</dimen>
     <dimen name="_188dp">188dp</dimen>
+=======
+>>>>>>> 309b1ff8b436783af05b55176858d197f9a97bde
     <dimen name="_164dp">164dp</dimen>
+    <dimen name="_170dp">170dp</dimen>
+    <dimen name="_188dp">188dp</dimen>
     <dimen name="_198dp">198dp</dimen>
     <dimen name="_218dp">218dp</dimen>
     <dimen name="_228dp">228dp</dimen>
@@ -61,6 +66,11 @@
     <dimen name="layout_margin_bottom">100dp</dimen>
 
     <!--for text size-->
+<<<<<<< HEAD
+=======
+    <dimen name="_9sp">9sp</dimen>
+    <dimen name="_11sp">11sp</dimen>
+>>>>>>> 309b1ff8b436783af05b55176858d197f9a97bde
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_17sp">17sp</dimen>
     <dimen name="_19sp">19sp</dimen>

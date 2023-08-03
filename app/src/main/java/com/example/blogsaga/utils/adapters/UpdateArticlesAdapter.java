@@ -1,8 +1,11 @@
 package com.example.blogsaga.utils.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,14 +16,15 @@ import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
 import com.example.blogsaga.utils.models.Articles;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAdapter.ArticleHolder> {
-    private ArrayList<Articles> dataSet;
+    private List<Articles> dataSet;
     private RecyclerCallbacks listener;
 
-    public UpdateArticlesAdapter(Fragment context) {
-        dataSet = new ArrayList<>();
-        listener = (RecyclerCallbacks) context;
+    public UpdateArticlesAdapter(List<Articles> dataset, Context context,RecyclerCallbacks callbacks) {
+        this.dataSet = dataset;
+        this.listener=callbacks;
     }
 
     @NonNull
@@ -33,6 +37,12 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
 
     @Override
     public void onBindViewHolder(@NonNull ArticleHolder holder, int position) {
+        int resource=dataSet.get(position).getArticle_image();
+        int resource2=dataSet.get(position).getAcc_image();
+        String textview=dataSet.get(position).getTitle();
+        String textview2=dataSet.get(position).getAcc_name();
+        String textview3=dataSet.get(position).getTime();
+        holder.setdata(resource,resource2,textview,textview2,textview3);
 
     }
 
@@ -44,8 +54,16 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
     class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private RecyclerCallbacks listener;
 
+        private ImageView artimg,accimg;
+        private TextView atitle,accname,time;
+
         public ArticleHolder(@NonNull View itemView, RecyclerCallbacks listener) {
             super(itemView);
+            artimg=itemView.findViewById(R.id.article_image);
+            accimg=itemView.findViewById(R.id.client_AC_image);
+            atitle=itemView.findViewById(R.id.article_title);
+            accname=itemView.findViewById(R.id.client_AC_id);
+            time=itemView.findViewById(R.id.times);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
@@ -53,6 +71,14 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
         @Override
         public void onClick(View view) {
             listener.onClick(dataSet.get(getAdapterPosition()));
+        }
+
+        public void setdata(int resource, int resource2, String textview, String textview2, String textview3) {
+            artimg.setImageResource(resource);
+            accimg.setImageResource(resource2);
+            atitle.setText(textview);
+            accname.setText(textview2);
+            time.setText(textview3);
         }
     }
 }

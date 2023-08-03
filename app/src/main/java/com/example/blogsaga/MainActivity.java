@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
+import com.example.blogsaga.fragments.HomePage;
 import com.example.blogsaga.fragments.LoginFragment;
 import com.example.blogsaga.fragments.SignupFragment;
 
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addFragment(new SignupFragment());
+        addFragment(new HomePage());
     }
 
     public void addFragment(final Fragment fragment) {

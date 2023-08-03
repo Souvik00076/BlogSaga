@@ -39,14 +39,10 @@
     <style name="circle" parent="ShapeAppearanceOverlay">
         <item name="cornerSize">50%</item>
     </style>
-<<<<<<< HEAD
-=======
 <!--radius in card view-->
     <style name="shape" parent="">
         <item name="cornerSize">20%</item>
     </style>
-
->>>>>>> 309b1ff8b436783af05b55176858d197f9a97bde
 
     <style name="cardView_style"> <!-- This is for home page -->
         <item name="cardCornerRadius">@dimen/_24dp</item>
@@ -59,7 +55,6 @@
     <style name="cardView_recent_style"> <!-- This is for home page -->
         <item name="cardCornerRadius">@dimen/_24dp</item>
         <item name="cardElevation">@dimen/_8dp</item>
-<<<<<<< HEAD
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_123dp</item>
         <item name="android:scaleType">centerCrop</item>
@@ -67,11 +62,9 @@
 
     <style name="circle_img" parent="">
         <item name="cornerSize">20%</item>
-=======
         <item name="android:layout_width">@dimen/_170dp</item>
         <item name="android:layout_height">@dimen/_170dp</item>
         <item name="android:layout_margin">@dimen/_16dp</item>
->>>>>>> 309b1ff8b436783af05b55176858d197f9a97bde
     </style>
     
     <style name="cardView_linear_layout_style"> <!-- In home page into cardView -->

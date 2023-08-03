@@ -20,7 +20,6 @@
         app:shapeAppearanceOverlay="@style/circle"
         app:strokeWidth="@dimen/_2dp" />
 
-<<<<<<< HEAD
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/change_profile_button"
         android:layout_width="@dimen/_44dp"
@@ -29,30 +28,6 @@
         android:layout_marginTop="-106dp"
         android:layout_marginEnd="-47dp"
         />
-=======
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="@dimen/_164dp"
-            android:layout_height="@dimen/_164dp"
-            android:layout_marginBottom="@dimen/_36dp"
-            android:background="@drawable/singpic"
-            android:padding="@dimen/_8dp"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/circle"
-            app:strokeWidth="@dimen/_2dp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/change_profile_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:shapeAppearanceOverlay="@style/circle"
-            android:layout_marginTop="@dimen/_N100dp"
-            android:layout_marginEnd="@dimen/_N52dp"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/baseline_camera_alt_24"
-            app:maxImageSize="@dimen/_32dp" />
->>>>>>> 309b1ff8b436783af05b55176858d197f9a97bde
-
 
     <EditText
         android:id="@+id/txt_email"

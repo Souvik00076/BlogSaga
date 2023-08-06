@@ -35,6 +35,18 @@
     <string name="followers">Followers</string>
     <string name="drafts">Drafts</string>
     <string name="published">Published</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- For create_page -->
+    <string name="create">Create</string>
+    <string name="save">Save</string>
+    <string name="publish">Publish</string>
+    <string name="addArticleCoverPage">Add article cover page</string>
+    <string name="title">Title</string>
+    <string name="articleTitleHint">Article Title</string>
+    <string name="write_article">Write your article here…</string>
+    <string name="selectTopic">Select Topic</string>
+    <string name="setSchedule">Set schedule</string>
+    <string name="allowComments">Allow comments</string>
 </resources>

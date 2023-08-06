@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.blogsaga.R;
 
+import java.util.Objects;
+
 public class CreatePage extends Fragment {
 
     String[] categories = {"ART", "FASHION", "TRAVEL", "FOOD", "FITNESS", "TECH & INNOVATION", "GEO POLITICS", "OTHERS"};
@@ -34,7 +36,6 @@ public class CreatePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_create_page, container, false);
         init(root);
 
@@ -44,34 +45,34 @@ public class CreatePage extends Fragment {
         autoCompleteTextView.setAdapter(adapter);
         autoCompleteTextView2.setAdapter(adapter2);
 
-        autoCompleteTextView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(), "Item : " + item, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                Toast.makeText(getContext(), item + " SELECTED", Toast.LENGTH_SHORT).show();
+                autoCompleteTextView.dismissDropDown(); // Hide the dropdown after selection
             }
         });
 
-        autoCompleteTextView2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        autoCompleteTextView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(),"Item : " + item, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                Toast.makeText(getContext(),item + " SELECTED", Toast.LENGTH_SHORT).show();
+                autoCompleteTextView2.dismissDropDown(); // Hide the dropdown after selection
             }
         });
 
+        // Add click listeners to show the dropdown when the AutoCompleteTextView is clicked
+        autoCompleteTextView.setOnClickListener(v -> autoCompleteTextView.showDropDown());
+        autoCompleteTextView2.setOnClickListener(v -> autoCompleteTextView2.showDropDown());
+
+        // Disable input in the AutoCompleteTextView
+        autoCompleteTextView.setEnabled(false);
+        autoCompleteTextView2.setEnabled(false);
         return root;
     }
+
 
     private void init(View root) {
         autoCompleteTextView = root.findViewById(R.id.select_auto_complete);

@@ -5,6 +5,5 @@
     tools:ignore="ExtraText">
 
     <solid android:color="@color/peach"/>
-    <corners android:radius="@dimen/_24dp"
-        />
+    <corners android:radius="@dimen/_24dp" />
 </shape>

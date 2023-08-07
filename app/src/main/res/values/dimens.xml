@@ -10,9 +10,13 @@
     <dimen name="_4dp">4dp</dimen>
     <dimen name="_6dp">6dp</dimen>
     <dimen name="_8dp">8dp</dimen>
+    <dimen name="_14dp">14dp</dimen>
     <dimen name="_16dp">16dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_22dp">22dp</dimen>
     <dimen name="_24dp">24dp</dimen>
     <dimen name="_28dp">28dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
     <dimen name="_32dp">32dp</dimen>
     <dimen name="_36dp">36dp</dimen>
     <dimen name="_40dp">40dp</dimen>
@@ -27,8 +31,10 @@
     <dimen name="_100dp">100dp</dimen>
     <dimen name="_104dp">104dp</dimen>
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
+    <dimen name="_123dp">123dp</dimen>
     <dimen name="_128dp">128dp</dimen>
     <dimen name="_140dp">140dp</dimen>
+    <dimen name="_158dp">158dp</dimen>
     <dimen name="_164dp">164dp</dimen>
     <dimen name="_170dp">170dp</dimen>
     <dimen name="_188dp">188dp</dimen>
@@ -39,6 +45,7 @@
     <dimen name="_297dp">297dp</dimen>
     <dimen name="_328dp">328dp</dimen>
     <dimen name="_356dp">356dp</dimen>
+    <dimen name="_380dp">380dp</dimen>
     <dimen name="_450dp">450dp</dimen>
 
     <dimen name="_680dp">680dp</dimen>
@@ -60,15 +67,21 @@
     <dimen name="layout_margin_bottom">100dp</dimen>
 
     <!--for text size-->
+
     <dimen name="_9sp">9sp</dimen>
     <dimen name="_11sp">11sp</dimen>
+    <dimen name="_14sp">14sp</dimen>
+    <dimen name="_15sp">15sp</dimen>
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_17sp">17sp</dimen>
     <dimen name="_19sp">19sp</dimen>
     <dimen name="_24sp">24sp</dimen>
+    <dimen name="_30sp">30sp</dimen>
+    <dimen name="_35sp">35sp</dimen>
     <dimen name="_40sp">40sp</dimen>
 
     <!-- For margin in Negetive DP-->
+    <dimen name="_N4dp">-4dp</dimen>
     <dimen name="_N52dp">-52dp</dimen>
     <dimen name="_N100dp">-100dp</dimen>
     <dimen name="_N92dp">-92dp</dimen>       <!-- TextView margin Start into profile page -->

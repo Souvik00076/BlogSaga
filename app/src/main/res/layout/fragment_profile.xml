@@ -114,7 +114,6 @@
             android:layout_height="wrap_content"
             android:text="135"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/vertical_part1"
             android:fontFamily="@font/oleoscript_regular"
             android:textSize="@dimen/_24sp"
             android:layout_marginHorizontal="@dimen/_52dp"

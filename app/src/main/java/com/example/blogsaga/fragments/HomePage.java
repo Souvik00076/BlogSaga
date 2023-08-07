@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,11 +20,14 @@ import com.example.blogsaga.R;
 import com.example.blogsaga.utils.adapters.UpdateArticlesAdapter;
 import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
 import com.example.blogsaga.utils.models.Articles;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage extends Fragment implements RecyclerCallbacks {
+
+    private FloatingActionButton createbtn;
 
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
@@ -33,6 +38,12 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        createbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addFragment();
+            }
+        });
         return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
 
@@ -40,6 +51,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById(R.id.recyclerview);
+        createbtn=view.findViewById(R.id.create_button);
         initData();
         initRecyclerview();
     }
@@ -65,5 +77,14 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     @Override
     public void onClick(Articles articles) {
         Toast.makeText(getContext(), "hii", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void addFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.commit();
+
     }
 }

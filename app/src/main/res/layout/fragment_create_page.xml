@@ -334,6 +334,7 @@
             <FrameLayout
                 android:layout_width="@dimen/_356dp"
                 android:layout_height="@dimen/_64dp"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/select_comment_dropdown"
                 />
 

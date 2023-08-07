@@ -169,7 +169,7 @@
             android:paddingEnd="@dimen/_12dp"
             />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/logout_btn"
             style="@style/button_style"
             android:text="@string/btnLogOut"

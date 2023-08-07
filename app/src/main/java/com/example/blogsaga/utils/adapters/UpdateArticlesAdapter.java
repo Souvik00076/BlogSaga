@@ -15,8 +15,8 @@ import com.example.blogsaga.utils.models.Articles;
 import java.util.ArrayList;
 
 public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAdapter.ArticleHolder> {
-    private ArrayList<Articles> dataSet;
-    private RecyclerCallbacks listener;
+    private final ArrayList<Articles> dataSet;
+    private final RecyclerCallbacks listener;
 
     public UpdateArticlesAdapter(Fragment context) {
         dataSet = new ArrayList<>();
@@ -42,7 +42,7 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
     }
 
     class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private RecyclerCallbacks listener;
+        private final RecyclerCallbacks listener;
 
         public ArticleHolder(@NonNull View itemView, RecyclerCallbacks listener) {
             super(itemView);

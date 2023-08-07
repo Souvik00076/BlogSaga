@@ -3,6 +3,8 @@ package com.example.blogsaga.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,6 +30,7 @@ public class CreatePage extends Fragment {
 
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapter2;
+    ImageView crossbtn;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +74,16 @@ public class CreatePage extends Fragment {
         // Disable input in the AutoCompleteTextView
         autoCompleteTextView.setEnabled(false);
         autoCompleteTextView2.setEnabled(false);
+
+//        this is for back to home page from the create page
+        crossbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addFragment(new HomePage());
+            }
+        });
+
+
         return root;
     }
 
@@ -77,6 +91,16 @@ public class CreatePage extends Fragment {
     private void init(View root) {
         autoCompleteTextView = root.findViewById(R.id.select_auto_complete);
         autoCompleteTextView2 = root.findViewById(R.id.select_auto_complete2);
+        crossbtn=root.findViewById(R.id.cross);
+
+    }
+
+
+    public void addFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.commit();
 
     }
 

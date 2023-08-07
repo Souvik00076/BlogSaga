@@ -52,7 +52,7 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
     }
 
     class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private RecyclerCallbacks listener;
+        private final RecyclerCallbacks listener;
 
         private ImageView artimg,accimg;
         private TextView atitle,accname,time;

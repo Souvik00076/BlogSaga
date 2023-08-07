@@ -41,7 +41,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         createbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFragment();
+                addFragment(new CreatePage() );
             }
         });
         return inflater.inflate(R.layout.fragment_home_page, container, false);

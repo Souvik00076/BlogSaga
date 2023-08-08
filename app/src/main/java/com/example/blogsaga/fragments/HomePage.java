@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.blogsaga.R;
@@ -28,6 +29,7 @@ import java.util.List;
 public class HomePage extends Fragment implements RecyclerCallbacks {
 
     FloatingActionButton createbtn;
+    ImageView notificationbtn,bookmarkbtn;
 
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
@@ -48,6 +50,8 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById(R.id.recyclerview);
         createbtn=view.findViewById(R.id.create_button);
+        notificationbtn=view.findViewById(R.id.notification);
+        bookmarkbtn=view.findViewById(R.id.bookmark);
         initData();
         initRecyclerview();
 
@@ -55,6 +59,18 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
             @Override
             public void onClick(View view) {
                 addFragment(new CreatePage());
+            }
+        });
+        notificationbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addFragment(new Notification());
+            }
+        });
+        bookmarkbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addFragment(new MyBookmark());
             }
         });
     }

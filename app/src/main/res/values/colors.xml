@@ -10,5 +10,6 @@
     <color name="dark_green">#F70C6811</color>
     <color name="light_peach">#E4F5DCDC</color>
     <color name="remove_back">#00FFFFFF</color>
+    <color name="search">#73FF9C41</color>
 
 </resources>

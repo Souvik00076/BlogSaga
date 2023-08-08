@@ -102,100 +102,104 @@
 
     <RelativeLayout
         android:id="@+id/number_AAf"
-        android:layout_below="@+id/horizontal_part1"
         android:layout_width="@dimen/_450dp"
         android:layout_height="@dimen/_100dp"
-        android:layout_centerInParent="true"
-        >
+        android:layout_below="@+id/horizontal_part1"
+        android:layout_centerInParent="true">
         <!--Articles section-->
         <TextView
             android:id="@+id/article_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="135"
             android:layout_alignParentStart="true"
-            android:fontFamily="@font/oleoscript_regular"
-            android:textSize="@dimen/_24sp"
             android:layout_marginHorizontal="@dimen/_52dp"
             android:layout_marginTop="@dimen/_12dp"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/oleoscript_regular"
+            android:text="135"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_24sp" />
+
         <TextView
             android:id="@+id/Articles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_no"
             android:layout_alignParentStart="true"
-            android:text="@string/articles"
+            android:layout_marginHorizontal="@dimen/_40dp"
             android:fontFamily="@font/oleoscript_regular"
+            android:text="@string/articles"
             android:textColor="@color/black"
-            android:textSize="@dimen/_19sp"
-            android:layout_marginHorizontal="@dimen/_40dp"/>
+            android:textSize="@dimen/_19sp" />
 
         <!--following section-->
         <View
             android:id="@+id/vertical_part1"
             android:layout_width="@dimen/_3dp"
             android:layout_height="@dimen/_78dp"
-            android:layout_marginTop="@dimen/_12dp"
             android:layout_marginStart="@dimen/_5dp"
+            android:layout_marginTop="@dimen/_12dp"
             android:layout_toEndOf="@+id/Articles"
-            android:background="@color/tran"/>
+            android:background="@color/tran" />
+
         <TextView
             android:id="@+id/following_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="125"
             android:layout_alignEnd="@+id/vertical_part2"
-            android:fontFamily="@font/oleoscript_regular"
-            android:textSize="@dimen/_24sp"
             android:layout_marginHorizontal="@dimen/_40dp"
-            android:layout_toEndOf="@+id/vertical_part1"
             android:layout_marginTop="@dimen/_12dp"
-            android:textColor="@color/black"/>
+            android:layout_toEndOf="@+id/vertical_part1"
+            android:fontFamily="@font/oleoscript_regular"
+            android:text="125"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_24sp" />
+
         <TextView
             android:id="@+id/following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/following_no"
+            android:layout_marginHorizontal="@dimen/_24dp"
             android:layout_toEndOf="@+id/vertical_part1"
-            android:text="@string/following"
             android:fontFamily="@font/oleoscript_regular"
+            android:text="@string/following"
             android:textColor="@color/black"
-            android:textSize="@dimen/_19sp"
-            android:layout_marginHorizontal="@dimen/_24dp"/>
+            android:textSize="@dimen/_19sp" />
 
         <!--    follower section-->
         <View
             android:id="@+id/vertical_part2"
             android:layout_width="@dimen/_3dp"
             android:layout_height="@dimen/_78dp"
-            android:layout_marginTop="@dimen/_12dp"
             android:layout_marginStart="@dimen/_5dp"
+            android:layout_marginTop="@dimen/_12dp"
             android:layout_toEndOf="@+id/following"
-            android:background="@color/tran"/>
+            android:background="@color/tran" />
+
         <TextView
             android:id="@+id/follower_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="125"
             android:layout_alignParentEnd="true"
-            android:fontFamily="@font/oleoscript_regular"
-            android:textSize="@dimen/_24sp"
             android:layout_marginHorizontal="@dimen/_40dp"
-            android:layout_toEndOf="@+id/vertical_part2"
             android:layout_marginTop="@dimen/_12dp"
-            android:textColor="@color/black"/>
+            android:layout_toEndOf="@+id/vertical_part2"
+            android:fontFamily="@font/oleoscript_regular"
+            android:text="125"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_24sp" />
+
         <TextView
             android:id="@+id/follower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/following_no"
+            android:layout_marginHorizontal="@dimen/_24dp"
             android:layout_toEndOf="@+id/vertical_part2"
-            android:text="@string/followers"
             android:fontFamily="@font/oleoscript_regular"
+            android:text="@string/followers"
             android:textColor="@color/black"
-            android:textSize="@dimen/_19sp"
-            android:layout_marginHorizontal="@dimen/_24dp"/>
+            android:textSize="@dimen/_19sp" />
 
     </RelativeLayout>
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.profile"
+    tools:context=".fragments.Draft_fragment"
     android:background="@drawable/back_app">
 
 
@@ -205,39 +205,27 @@
 
     <View
         android:id="@+id/horizontal_part2"
-        android:layout_width="match_parent"
         android:layout_marginEnd="@dimen/_24dp"
         android:layout_marginStart="@dimen/_24dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_3dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/number_AAf"
         android:background="@color/tran"/>
 
-    <TextView
-        android:id="@+id/drafts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/drafts"
-        android:fontFamily="@font/oleoscript_bold"
-        android:textSize="@dimen/_24sp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/number_AAf"
-        android:layout_marginTop="@dimen/_24dp"
-        android:layout_marginStart="@dimen/_78dp"
-        />
-
-    <TextView
-        android:id="@+id/published"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/published"
-        android:fontFamily="@font/oleoscript_bold"
-        android:textSize="@dimen/_24sp"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/black"
-        android:layout_below="@+id/number_AAf"
-        android:layout_marginTop="@dimen/_24dp"
-        android:layout_marginEnd="@dimen/_78dp"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/_12dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:layout_below="@+id/horizontal_part2"
+        app:tabTextColor="@color/light_black"
+        android:background="@color/remove_back"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/remove_back"
+        app:tabTextAppearance="@style/TabTextStyle"
         />
 
     <View
@@ -246,10 +234,18 @@
         android:layout_marginStart="@dimen/_24dp"
         android:layout_marginEnd="@dimen/_24dp"
         android:layout_height="@dimen/_3dp"
-        android:layout_marginTop="@dimen/_12dp"
+        android:layout_marginTop="@dimen/_10dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/drafts"
+        android:layout_below="@+id/tab_layout"
         android:background="@color/tran"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_below="@+id/horizontal_part3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4dp"/>
+
 
 
 </RelativeLayout>

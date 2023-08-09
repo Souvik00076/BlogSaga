@@ -77,7 +77,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     private void initRecyclerview() {
         LayoutManager=new LinearLayoutManager(requireContext());
-        LayoutManager.setOrientation(recyclerView.HORIZONTAL);
+        LayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(LayoutManager);
         Adapter=new UpdateArticlesAdapter(dataset,getContext(),this);
         recyclerView.setAdapter(Adapter);
@@ -101,6 +101,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     public void addFragment(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
+        assert fragmentManager != null;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.commit();

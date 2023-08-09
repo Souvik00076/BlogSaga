@@ -5,14 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".fragments.PublishedFragments">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/light_black"
-        android:textSize="48sp"
-        android:text="Published"
-        android:fontFamily="@font/oleoscript_bold"
-        android:layout_gravity="center"
-        />
+        android:id="@+id/recyclerview"/>
 
 </FrameLayout>

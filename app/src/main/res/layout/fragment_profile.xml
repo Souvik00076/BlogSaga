@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.Draft_fragment"
+    tools:context=".fragments.Profile"
     android:background="@drawable/back_app">
 
 
@@ -216,7 +216,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/_48dp"
         android:layout_marginTop="@dimen/_12dp"
         app:tabGravity="fill"
         app:tabMode="fixed"
@@ -244,7 +244,7 @@
         android:layout_below="@+id/horizontal_part3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_4dp"/>
+        />
 
 
 

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/light_black"
         android:textSize="48sp"
-        android:text="Published"
+        android:text="Drafts"
         android:fontFamily="@font/oleoscript_bold"
         android:layout_gravity="center"
         />

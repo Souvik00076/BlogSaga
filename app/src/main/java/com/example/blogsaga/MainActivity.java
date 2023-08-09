@@ -5,12 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-import com.example.blogsaga.fragments.HomePage;
-import com.example.blogsaga.fragments.LoginFragment;
-import com.example.blogsaga.fragments.CreatePage;
-import com.example.blogsaga.fragments.EditProfile;
-import com.example.blogsaga.fragments.SignupFragment;
-import com.example.blogsaga.fragments.profile;
+import com.example.blogsaga.fragments.Profile;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,8 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        addFragment(new profile());
+        addFragment(new Profile());
     }
 
     public void addFragment(final Fragment fragment) {

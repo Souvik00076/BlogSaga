@@ -27,7 +27,7 @@ import java.util.List;
 
 public class HomePage extends Fragment implements RecyclerCallbacks {
 
-    private FloatingActionButton createbtn;
+    FloatingActionButton createbtn;
 
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
@@ -38,13 +38,9 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        createbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addFragment(new CreatePage() );
-            }
-        });
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        View root= inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        return root;
     }
 
     @Override
@@ -54,6 +50,13 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         createbtn=view.findViewById(R.id.create_button);
         initData();
         initRecyclerview();
+
+        createbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addFragment(new CreatePage());
+            }
+        });
     }
 
     private void initRecyclerview() {

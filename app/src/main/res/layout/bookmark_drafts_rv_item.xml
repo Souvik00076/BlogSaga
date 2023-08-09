@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
-        android:layout_width="@dimen/_297dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_128dp"
         android:layout_marginStart="@dimen/_12dp"
         android:layout_marginTop="@dimen/_8dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/shape_img"
+            android:id="@+id/article_image"
             android:layout_width="@dimen/_112dp"
             android:layout_height="@dimen/_123dp"
             android:scaleType="centerCrop"
@@ -19,7 +19,7 @@
             />
 
         <ImageView
-            android:id="@+id/bookmark"
+            android:id="@+id/bookmark_recent"
             android:layout_width="@dimen/_22dp"
             android:layout_height="27dp"
             android:src="@drawable/baseline_bookmark_border_24"
@@ -29,38 +29,38 @@
             android:layout_marginEnd="@dimen/_2dp"
             />
         <TextView
-            android:id="@+id/title_articles"
+            android:id="@+id/article_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5 Tips for stay fit and healthy"
             android:textColor="@color/black"
-            android:layout_toEndOf="@+id/shape_img"
+            android:layout_toEndOf="@+id/article_image"
             android:fontFamily="@font/oleoscript_regular"
             android:textSize="@dimen/_19sp"
             android:layout_marginStart="@dimen/_12dp"
             android:layout_marginTop="@dimen/_4dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profile_pic"
+            android:id="@+id/client_AC_image"
             android:layout_width="@dimen/_20dp"
             android:layout_height="@dimen/_20dp"
             android:layout_marginStart="@dimen/_12dp"
             android:layout_marginTop="@dimen/_4dp"
             android:background="@drawable/singpic"
-            android:layout_toEndOf="@+id/shape_img"
-            android:layout_below="@+id/title_articles"
+            android:layout_toEndOf="@+id/article_image"
+            android:layout_below="@+id/article_title"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/circle"
             app:strokeWidth="@dimen/_2dp" />
 
         <TextView
-            android:id="@+id/ac_name"
+            android:id="@+id/client_AC_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/profile_pic"
+            android:layout_toEndOf="@+id/client_AC_image"
             android:text="xyz fightness"
             android:textSize="@dimen/_10sp"
-            android:layout_below="@+id/title_articles"
+            android:layout_below="@+id/article_title"
             android:fontFamily="@font/oleoscript_regular"
             android:layout_marginTop="@dimen/_8dp"
             android:layout_marginStart="@dimen/_8dp"
@@ -68,14 +68,14 @@
             />
 
         <TextView
-            android:id="@+id/time_ago"
+            android:id="@+id/times"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/_16dp"
             android:layout_marginBottom="@dimen/_10dp"
-            android:layout_toEndOf="@+id/shape_img"
+            android:layout_toEndOf="@+id/article_image"
             android:fontFamily="@font/oleoscript_regular"
             android:text="8 days ago"
             android:textColor="@color/black"

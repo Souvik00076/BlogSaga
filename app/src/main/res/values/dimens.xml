@@ -43,6 +43,7 @@
     <dimen name="_112dp">112dp</dimen> <!-- For button -->
     <dimen name="_123dp">123dp</dimen>
     <dimen name="_128dp">128dp</dimen>
+    <dimen name="_132dp">132dp</dimen>
     <dimen name="_140dp">140dp</dimen>
     <dimen name="_158dp">158dp</dimen>
     <dimen name="_164dp">164dp</dimen>

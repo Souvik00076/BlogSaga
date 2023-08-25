@@ -115,7 +115,6 @@
                 android:text="@string/articles"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
-
             <LinearLayout
                 android:id="@+id/button_sv"
                 android:layout_width="@dimen/_356dp"
@@ -189,10 +188,6 @@
                             style="@style/img_sv_btn"
                             android:src="@drawable/underlined" />
 
-                        <ImageButton
-                            android:id="@+id/voice"
-                            style="@style/img_sv_btn"
-                            android:src="@drawable/voice" />
 
 
                     </LinearLayout>
@@ -200,6 +195,7 @@
                 </HorizontalScrollView>
 
             </LinearLayout>
+
 
             <EditText
                 android:id="@+id/writing_text_et"

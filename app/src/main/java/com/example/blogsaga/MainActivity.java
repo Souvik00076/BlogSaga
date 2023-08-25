@@ -6,6 +6,11 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 
+
+import com.example.blogsaga.fragments.HomePage;
+import com.example.blogsaga.fragments.LoginFragment;
+
+
 import com.example.blogsaga.fragments.HomePage;
 import com.example.blogsaga.fragments.LoginFragment;
 
@@ -21,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addFragment(new profile());
+
 
         addFragment(new CreatePage());
 

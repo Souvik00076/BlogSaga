@@ -29,7 +29,7 @@ import java.util.List;
 public class HomePage extends Fragment implements RecyclerCallbacks {
 
     FloatingActionButton createbtn;
-    ImageView notificationbtn,bookmarkbtn;
+    ImageView notificationbtn, bookmarkbtn;
 
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
@@ -40,7 +40,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root= inflater.inflate(R.layout.fragment_home_page, container, false);
+        View root = inflater.inflate(R.layout.fragment_home_page, container, false);
 
         return root;
     }
@@ -48,10 +48,10 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView=view.findViewById(R.id.recyclerview);
-        createbtn=view.findViewById(R.id.create_button);
-        notificationbtn=view.findViewById(R.id.notification);
-        bookmarkbtn=view.findViewById(R.id.bookmark);
+        recyclerView = view.findViewById(R.id.recyclerview);
+        createbtn = view.findViewById(R.id.create_button);
+        notificationbtn = view.findViewById(R.id.notification);
+        bookmarkbtn = view.findViewById(R.id.bookmark);
         initData();
         initRecyclerview();
 
@@ -76,20 +76,20 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     }
 
     private void initRecyclerview() {
-        LayoutManager=new LinearLayoutManager(requireContext());
+        LayoutManager = new LinearLayoutManager(requireContext());
         LayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(LayoutManager);
-        Adapter=new UpdateArticlesAdapter(dataset,getContext(),this);
+        Adapter = new UpdateArticlesAdapter(dataset, getContext(), this);
         recyclerView.setAdapter(Adapter);
         Adapter.notifyDataSetChanged();
 
     }
 
     private void initData() {
-        dataset=new ArrayList<>();
-        dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
-        dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
-        dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
+        dataset = new ArrayList<>();
+        //dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
+        //dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
+        //dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
 
     }
 

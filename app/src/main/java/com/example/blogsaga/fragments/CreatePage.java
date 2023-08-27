@@ -20,6 +20,14 @@ import android.widget.Toast;
 import com.example.blogsaga.R;
 
 import java.util.Objects;
+/*
+
+ Intent intent = new Intent(ChatScreen.this, WriteChatService.class);
+                    intent.putExtra("Message", message);
+                    startService(intent);
+
+
+ */
 
 public class CreatePage extends Fragment {
 
@@ -82,8 +90,6 @@ public class CreatePage extends Fragment {
                 addFragment(new HomePage());
             }
         });
-
-
         return root;
     }
 
@@ -92,7 +98,6 @@ public class CreatePage extends Fragment {
         autoCompleteTextView = root.findViewById(R.id.select_auto_complete);
         autoCompleteTextView2 = root.findViewById(R.id.select_auto_complete2);
         crossbtn=root.findViewById(R.id.cross);
-
     }
 
 

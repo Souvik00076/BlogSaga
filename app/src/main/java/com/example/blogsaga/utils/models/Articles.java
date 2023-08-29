@@ -17,12 +17,20 @@ public class Articles  implements Parcelable{
         this.title=title;
     }
 
+
+
+
+
+    public int getArticle_image() {
+        return article_image;
+
     protected Articles(Parcel in) {
         //article_image = in.readInt();
         //acc_image = in.readInt();
         acc_name = in.readString();
         time = in.readString();
         title = in.readString();
+
     }
 
     public static final Creator<Articles> CREATOR = new Creator<Articles>() {

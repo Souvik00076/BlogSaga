@@ -1,5 +1,6 @@
 package com.example.blogsaga.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.blogsaga.R;
+import com.example.blogsaga.utils.services.UploadArticleService;
 
 import java.util.Objects;
 /*
@@ -30,6 +32,8 @@ import java.util.Objects;
  */
 
 public class CreatePage extends Fragment {
+
+    androidx.appcompat.widget.AppCompatButton save;
 
     String[] categories = {"ART", "FASHION", "TRAVEL", "FOOD", "FITNESS", "TECH & INNOVATION", "GEO POLITICS", "OTHERS"};
     String[] comments = {"YES", "NO"};
@@ -85,11 +89,27 @@ public class CreatePage extends Fragment {
 
 //        this is for back to home page from the create page
         crossbtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 addFragment(new HomePage());
             }
         });
+
+        //save function implemented
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Intent intent = new Intent( ,UploadArticleService.class);
+//                intent.putExtra("Message", message);
+//                startService(intent);
+
+            }
+        });
+
+
         return root;
     }
 
@@ -98,6 +118,7 @@ public class CreatePage extends Fragment {
         autoCompleteTextView = root.findViewById(R.id.select_auto_complete);
         autoCompleteTextView2 = root.findViewById(R.id.select_auto_complete2);
         crossbtn=root.findViewById(R.id.cross);
+        save = root.findViewById(R.id.save);
     }
 
 

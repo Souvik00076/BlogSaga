@@ -1,36 +1,38 @@
 package com.example.blogsaga.utils.models;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-public class Articles  implements Parcelable{
+public class Articles implements Parcelable {
+    private Uri imageUri;
+    private String title;
+    private String description;
+    private final String ID;
+    private byte[] imageBytes;
 
-    //private int article_image, acc_image;
-    private String acc_name,time,title;
-    public Articles(/*int article_image, int acc_image, String acc_name,*/ String time, String title) {
-      //  this.article_image=article_image;
-        //this.acc_image=acc_image;
-        this.acc_name=acc_name;
-        this.time=time;
-        this.title=title;
+    public Articles(Uri imageUri, String title, String description, String ID) {
+        this.imageUri = imageUri;
+        this.title = title;
+        this.description = description;
+        this.ID = ID;
     }
 
-
-
-
-
-    public int getArticle_image() {
-        return article_image;
+    public Articles(byte[] imageBytes, String title, String description, String ID) {
+        this.imageBytes = imageBytes;
+        this.title = title;
+        this.description = description;
+        this.ID = ID;
+    }
 
     protected Articles(Parcel in) {
-        //article_image = in.readInt();
-        //acc_image = in.readInt();
-        acc_name = in.readString();
-        time = in.readString();
+        imageUri = in.readParcelable(Uri.class.getClassLoader());
         title = in.readString();
-
+        description = in.readString();
+        ID = in.readString();
     }
 
     public static final Creator<Articles> CREATOR = new Creator<Articles>() {
@@ -45,24 +47,32 @@ public class Articles  implements Parcelable{
         }
     };
 
-    /*public int getArticle_image() {
-        return article_image;
-    }*/
-    /*
-    public int getAcc_image() {
-        return acc_image;
-    }*/
-
-    public String getAcc_name() {
-        return acc_name;
+    public Uri getImageUri() {
+        return imageUri;
     }
 
-    public String getTime() {
-        return time;
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getId() {
+        return ID;
     }
 
     @Override
@@ -70,13 +80,22 @@ public class Articles  implements Parcelable{
         return 0;
     }
 
+
+    public byte[] getImageBytes() {
+        return imageBytes;
+    }
+
+    public void setImageBytes(byte[] imageBytes) {
+        this.imageBytes = imageBytes;
+    }
+
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
-         //parcel.writeInt(article_image);
-        // parcel.writeInt(acc_image);
-        parcel.writeString(acc_name);
-        parcel.writeString(time);
+        parcel.writeParcelable(imageUri, i);
         parcel.writeString(title);
+        parcel.writeString(description);
+        parcel.writeString(ID);
+        parcel.writeByteArray(imageBytes);
     }
 }
 

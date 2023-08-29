@@ -7,8 +7,8 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.os.Process;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +50,7 @@ public class UploadArticleService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Message msg = serviceHandler.obtainMessage();
         msg.arg1 = startId;
-        Log.i("Update User service", "started");
+        Log.i("Articles Upload Service", "started");
         modelObj = (Articles) intent.getParcelableExtra("Add article");
         serviceHandler.sendMessage(msg);
         return START_STICKY;
@@ -65,6 +65,6 @@ public class UploadArticleService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("Update user service", "Called");
+        Log.i("Articles Upload Service", "Destroyed");
     }
 }

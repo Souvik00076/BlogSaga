@@ -58,7 +58,7 @@
             >
 
             <!-- For insert image -->
-            <ImageButton
+            <ImageView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/img_insert"
                 android:layout_width="@dimen/_356dp"
@@ -184,7 +184,7 @@
 
 
             <EditText
-                android:id="@+id/writing_text_et"
+                android:id="@+id/description_et"
                 android:layout_width="@dimen/_356dp"
                 android:layout_height="@dimen/_450dp"
                 android:background="@drawable/widgets_create_img"

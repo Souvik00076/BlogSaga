@@ -1,7 +1,11 @@
 package com.example.blogsaga.utils;
 
 import android.text.TextUtils;
+import android.widget.Toast;
+
 public class GeneralUtilities {
+
+
     public static int verificationUtils(String[] data) {
         final String email = data[0];
         final String password = data[1];
@@ -20,4 +24,25 @@ public class GeneralUtilities {
         //email anatomy check is done here
         return true;
     }
+
+
+    private void ValidateBlog(String data[]) {
+
+        final String title = data[0];
+        final String description = data[1];
+        final String imageBitmap=data[2];
+
+        if(imageBitmap==null){
+            Toast.makeText(getContext(), "add image", Toast.LENGTH_SHORT).show();
+        } else if (title.isEmpty()) {
+            Toast.makeText(getContext(), "add title", Toast.LENGTH_SHORT).show();
+        } else if (description.isEmpty()) {
+            Toast.makeText(getContext(), "please write someting in the blog", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+        }
+
+    }
 }
+

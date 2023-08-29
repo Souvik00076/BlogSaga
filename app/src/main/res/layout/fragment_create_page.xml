@@ -28,6 +28,7 @@
         android:textSize="@dimen/_35sp" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save"
         style="@style/button_style_crate_page"
         android:layout_marginEnd="@dimen/_14sp"
         android:layout_toStartOf="@+id/publish"
@@ -57,29 +58,14 @@
             >
 
             <!-- For insert image -->
-            <LinearLayout
+            <ImageButton
+                android:layout_centerHorizontal="true"
                 android:id="@+id/img_insert"
                 android:layout_width="@dimen/_356dp"
                 android:layout_height="@dimen/_228dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_28dp"
-                android:background="@drawable/widgets_create_img"
-                android:elevation="@dimen/_12dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/_40dp"
-                    android:layout_height="@dimen/_40dp"
-                    android:src="@drawable/gallery" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/oleoscript_bold"
-                    android:text="@string/addArticleCoverPage"
-                    android:textSize="@dimen/_19sp" />
-            </LinearLayout>
+                android:src="@drawable/gallery"
+                android:scaleType="fitCenter"
+                />
 
             <TextView
                 android:id="@+id/title"

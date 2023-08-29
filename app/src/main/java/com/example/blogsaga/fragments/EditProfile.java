@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.example.blogsaga.MainActivity;
 import com.example.blogsaga.R;
 
 public class EditProfile extends Fragment {
@@ -37,7 +35,7 @@ public class EditProfile extends Fragment {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFragment(new profile());
+                addFragment(new Profile());
             }
         });
 
@@ -51,6 +49,7 @@ public class EditProfile extends Fragment {
 
     public void addFragment(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
+        assert fragmentManager != null;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.commit();

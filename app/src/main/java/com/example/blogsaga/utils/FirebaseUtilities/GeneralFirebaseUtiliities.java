@@ -6,6 +6,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
+import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
+import com.example.blogsaga.utils.models.Articles;
 import com.example.blogsaga.utils.models.User;
 import com.example.blogsaga.utils.models.UserToken;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +22,7 @@ import java.io.ByteArrayOutputStream;
 
 public class GeneralFirebaseUtiliities {
     private static User user = User.getInstance();
+
 
     public static void registerUser(final UserToken token, final GeneralCallbacks callbacks) {
         FirebaseAuth auth = user.getAuth();
@@ -56,11 +59,33 @@ public class GeneralFirebaseUtiliities {
         });
     }
 
+    public static void uploadArticle(UserToken token, final RecyclerCallbacks callbacks){
+
+        public void uploadArticleRealTimeDb(final String email) {
+            final String uniqueKey = email.replace(".", "");
+            user.getReference().child("Users/" + uniqueKey + "/articles/").setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Log.i("Upload At Real time", " Completed");
+                        callbacks.onClick();
+                        return;
+                    }
+
+                }
+            });
+        }
+
+
+
+    }
+
+
+
     private static void uploadUser(UserToken token, final GeneralCallbacks callbacks) {
         String email = token.getEmail();
         Bitmap dpMap = token.getDpBitMap();
         StorageReference imageReference = user.getStorageReference().child("Users");
-
 
         //convert to byte arraystream and set the compression type
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -120,4 +145,8 @@ public class GeneralFirebaseUtiliities {
             }
         });
     }
+
+
+
 }
+

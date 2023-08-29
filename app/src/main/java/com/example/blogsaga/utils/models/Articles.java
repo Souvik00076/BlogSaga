@@ -18,6 +18,9 @@ public class Articles  {
         this.title=title;
     }
 
+
+
+
     public int getArticle_image() {
         return article_image;
     }

@@ -25,8 +25,11 @@ import android.widget.Toast;
 
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.FirebaseUtilities.DownloadUploadUtils;
+import com.example.blogsaga.utils.GeneralUtilities;
+import com.example.blogsaga.utils.models.Articles;
 import com.example.blogsaga.utils.services.UploadArticleService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
 
@@ -105,11 +108,22 @@ public class CreatePage extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final String title=titleEt.getText().toString();
-                final String description=descriptionEt.getText().toString();
-                final Drawable bitmapDrawable=imageInsertButton.getDrawable();
-                final Bitmap imageMap=((BitmapDrawable)bitmapDrawable).getBitmap();
-
+                final String title = titleEt.getText().toString();
+                final String description = descriptionEt.getText().toString();
+                String[] data = {title, description};
+                final Drawable bitmapDrawable = imageInsertButton.getDrawable();
+                final Bitmap imageMap = ((BitmapDrawable) bitmapDrawable).getBitmap();
+                if (!GeneralUtilities.ValidateBlog(data, imageMap)) {
+                    Toast.makeText(getContext(), "Some value missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                imageMap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] imageData = baos.toByteArray();
+                Articles articles = new Articles(imageData, title, description);
+                Intent uploadArticleServiceIntent = new Intent(getActivity(), UploadArticleService.class);
+                uploadArticleServiceIntent.putExtra("Add Article", articles);
+                getActivity().startService(uploadArticleServiceIntent);
             }
         });
 

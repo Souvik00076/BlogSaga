@@ -18,6 +18,15 @@ public class DownloadUploadUtils {
     private static FirebaseDatabase database = tokens.getDatabase();
 
     public static void uploadArticle(Articles articles) {
+        /*
+                Todo 1 : get the title ,description and bytearray from articles using getter method of
+                articles
+
+                Todo 2 : first upload the image in firebase then get the download link
+
+
+
+         */
         final String email = auth.getCurrentUser().getEmail().replace(".", "");
         database.getReference("Users/" + email + "/articles").setValue(articles)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

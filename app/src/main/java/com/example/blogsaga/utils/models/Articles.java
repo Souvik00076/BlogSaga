@@ -11,21 +11,19 @@ public class Articles implements Parcelable {
     private Uri imageUri;
     private String title;
     private String description;
-    private final String ID;
+    private String ID;
     private byte[] imageBytes;
 
-    public Articles(Uri imageUri, String title, String description, String ID) {
+    public Articles(Uri imageUri, String title, String description) {
         this.imageUri = imageUri;
         this.title = title;
         this.description = description;
-        this.ID = ID;
     }
 
-    public Articles(byte[] imageBytes, String title, String description, String ID) {
+    public Articles(byte[] imageBytes, String title, String description) {
         this.imageBytes = imageBytes;
         this.title = title;
         this.description = description;
-        this.ID = ID;
     }
 
     protected Articles(Parcel in) {

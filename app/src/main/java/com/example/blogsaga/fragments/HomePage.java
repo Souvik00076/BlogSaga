@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.blogsaga.R;
-import com.example.blogsaga.utils.adapters.UpdateArticlesAdapter;
 import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
 import com.example.blogsaga.utils.models.Articles;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,7 +33,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
     List<Articles> dataset;
-    UpdateArticlesAdapter Adapter;
+//    UpdateArticlesAdapter Adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,9 +78,9 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         LayoutManager = new LinearLayoutManager(requireContext());
         LayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(LayoutManager);
-        Adapter = new UpdateArticlesAdapter(dataset, getContext(), this);
-        recyclerView.setAdapter(Adapter);
-        Adapter.notifyDataSetChanged();
+//        Adapter = new UpdateArticlesAdapter(dataset, getContext(), this);
+//        recyclerView.setAdapter(Adapter);
+//        Adapter.notifyDataSetChanged();
 
     }
 

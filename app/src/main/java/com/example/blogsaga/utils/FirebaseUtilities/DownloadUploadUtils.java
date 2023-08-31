@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -23,7 +24,8 @@ import com.google.firebase.storage.UploadTask;
 public class DownloadUploadUtils {
     private static UserTokens tokens = UserTokens.getInstance();
     private static FirebaseAuth auth = tokens.getAuth();
-    private static FirebaseDatabase database = tokens.getDatabase();
+    private static DatabaseReference database = tokens.getDatabaseReference().child("Users/");
+    private static  int IMAGE_ID=0;
 
     public static void uploadArticle(Articles articles) {
         /*
@@ -33,13 +35,12 @@ public class DownloadUploadUtils {
                 Todo 2 : first upload the image in firebase then get the download link
          */
 
-        articles.getDescription();
-        articles.getTitle();
+        final String email = auth.getCurrentUser().getEmail().replace(".", "");
         UserTokens token = UserTokens.getInstance();
 
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference("images");
-
-        StorageReference imageRef = storageRef.child("my-image.jpg");
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(email+"articles/images");
+        StorageReference imageRef = storageRef.child("my-image"+IMAGE_ID+".jpg");
+        IMAGE_ID++;
 
         imageRef.putBytes(articles.getImageBytes())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -51,8 +52,17 @@ public class DownloadUploadUtils {
                             @Override
                             public void onSuccess(Uri uri) {
                                 // The download URL is available
-                                String downloadUrl = uri.toString();
                                 // Do something with the download URL, such as storing it in a database
+                                articles.setImageUri(uri);
+                                database.child( email + "/articles").push().setValue(articles)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    System.out.println("Information updated");
+                                                }
+                                            }
+                                        });
                             }
                         });
                     }
@@ -65,23 +75,6 @@ public class DownloadUploadUtils {
                     }
                 });
 
-
-
-
-
-
-
-
-        final String email = auth.getCurrentUser().getEmail().replace(".", "");
-        database.getReference("Users/" + email + "/articles").setValue(articles)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Data Uploaded");
-                        }
-                    }
-                });
     }
 
 }

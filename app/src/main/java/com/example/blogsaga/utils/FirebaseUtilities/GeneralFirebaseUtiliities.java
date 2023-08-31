@@ -59,27 +59,6 @@ public class GeneralFirebaseUtiliities {
         });
     }
 
-    public static void uploadArticle(UserToken token, final RecyclerCallbacks callbacks){
-
-        public void uploadArticleRealTimeDb(final String email) {
-            final String uniqueKey = email.replace(".", "");
-            user.getReference().child("Users/" + uniqueKey + "/articles/").setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        Log.i("Upload At Real time", " Completed");
-                        callbacks.onClick();
-                        return;
-                    }
-
-                }
-            });
-        }
-
-
-
-    }
-
 
 
     private static void uploadUser(UserToken token, final GeneralCallbacks callbacks) {

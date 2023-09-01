@@ -25,21 +25,21 @@ public class DownloadUploadUtils {
     private static UserTokens tokens = UserTokens.getInstance();
     private static FirebaseAuth auth = tokens.getAuth();
     private static DatabaseReference database = tokens.getDatabaseReference().child("Users/");
-    private static  int IMAGE_ID=0;
+    private static int IMAGE_ID = 0;
+
+    private static String generateUniqueKey() {
+        long timestamp = System.currentTimeMillis();
+        int randomValue = (int) (Math.random() * 100000); // Adjust the range as needed
+        return timestamp + "_" + randomValue;
+    }
 
     public static void uploadArticle(Articles articles) {
-        /*
-                Todo 1 : get the title ,description and bytearray from articles using getter method of
-                articles
-
-                Todo 2 : first upload the image in firebase then get the download link
-         */
 
         final String email = auth.getCurrentUser().getEmail().replace(".", "");
         UserTokens token = UserTokens.getInstance();
-
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference(email+"articles/images");
-        StorageReference imageRef = storageRef.child("my-image"+IMAGE_ID+".jpg");
+        String uniqueRef = generateUniqueKey();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference("articles/images/" + uniqueRef);
+        StorageReference imageRef = storageRef.child("my-image" + IMAGE_ID + ".jpg");
         IMAGE_ID++;
 
         imageRef.putBytes(articles.getImageBytes())
@@ -54,12 +54,13 @@ public class DownloadUploadUtils {
                                 // The download URL is available
                                 // Do something with the download URL, such as storing it in a database
                                 articles.setImageUri(uri);
-                                database.child( email + "/articles").push().setValue(articles)
+                                String uniqueKey = database.push().getKey();
+                                database.child("Articles/" + uniqueKey).setValue(articles)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    System.out.println("Information updated");
+                                                    database.child("Users/" + email + "/articles").setValue(uniqueKey);
                                                 }
                                             }
                                         });

@@ -1,11 +1,15 @@
 package com.example.blogsaga.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -45,9 +49,14 @@ public class CreatePage extends Fragment {
     private ArrayAdapter<String> adapter;
     private ArrayAdapter<String> adapter2;
     ImageView crossbtn;
-    private ImageView imageInsertButton;
+    private ImageButton imageInsertButton;
     private EditText titleEt;
     private EditText descriptionEt;
+    private static final int Gallery_pick=1;
+    Uri imageuri;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -127,12 +136,21 @@ public class CreatePage extends Fragment {
             }
         });
 
+        if (imageInsertButton !=null) {
+            imageInsertButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    OpenGallery();
+                }
+            });
+        }
 
         return root;
     }
 
 
     private void init(View root) {
+        imageInsertButton=root.findViewById(R.id.img_insert);
         autoCompleteTextView = root.findViewById(R.id.select_auto_complete);
         autoCompleteTextView2 = root.findViewById(R.id.select_auto_complete2);
         crossbtn = root.findViewById(R.id.cross);
@@ -149,5 +167,22 @@ public class CreatePage extends Fragment {
         fragmentTransaction.commit();
 
     }
+    private void OpenGallery(){
+        Intent galleryIntent= new Intent();
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent,Gallery_pick);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==Gallery_pick && resultCode==RESULT_OK && data!=null){
+            imageuri= data.getData();
+            imageInsertButton.setImageURI(imageuri);
+
+        }
+    }
+
 
 }

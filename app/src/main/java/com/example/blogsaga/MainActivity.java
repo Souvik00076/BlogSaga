@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
         addFragment(new CreatePage());
 
-
     }
 
     public void addFragment(final Fragment fragment) {

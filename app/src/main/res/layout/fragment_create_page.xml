@@ -58,7 +58,7 @@
             >
 
             <!-- For insert image -->
-            <ImageView
+            <ImageButton
                 android:layout_centerHorizontal="true"
                 android:id="@+id/img_insert"
                 android:layout_width="@dimen/_356dp"
@@ -207,8 +207,8 @@
                 android:textSize="@dimen/_30sp"
                 android:fontFamily="@font/oleoscript_bold"
                 android:textColor="@color/black"
-                android:layout_alignStart="@+id/writing_text_et"
-                android:layout_below="@+id/writing_text_et"
+                android:layout_alignStart="@+id/description_et"
+                android:layout_below="@+id/description_et"
                 android:layout_marginTop="@dimen/_16dp"
                 />
 
@@ -248,7 +248,7 @@
                 android:textSize="@dimen/_30sp"
                 android:fontFamily="@font/oleoscript_bold"
                 android:textColor="@color/black"
-                android:layout_alignStart="@+id/writing_text_et"
+                android:layout_alignStart="@+id/description_et"
                 android:layout_below="@+id/select_category_dropdown"
                 android:layout_marginTop="@dimen/_12dp"
                 android:text="@string/setSchedule"

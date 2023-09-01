@@ -1,6 +1,8 @@
 package com.example.blogsaga.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -15,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +42,6 @@ public class SignupFragment extends Fragment {
     private Button signUpButton;
     private GeneralCallbacks callbacks;
     private MainActivity activity;
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -115,4 +117,6 @@ public class SignupFragment extends Fragment {
             }
         };
     }
+
+
 }

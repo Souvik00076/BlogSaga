@@ -20,7 +20,14 @@ import android.widget.Toast;
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
 import com.example.blogsaga.utils.models.Articles;
+import com.example.blogsaga.utils.models.User;
+import com.example.blogsaga.utils.models.UserTokens;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +40,10 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
     List<Articles> dataset;
+    ChildEventListener ownArticleListener;
+    DatabaseReference ownArticleReference;
+    FirebaseAuth auth;
+    UserTokens token;
 //    UpdateArticlesAdapter Adapter;
 
     @Override
@@ -75,12 +86,41 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     }
 
     private void initRecyclerview() {
+        token = UserTokens.getInstance();
         LayoutManager = new LinearLayoutManager(requireContext());
         LayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(LayoutManager);
-//        Adapter = new UpdateArticlesAdapter(dataset, getContext(), this);
-//        recyclerView.setAdapter(Adapter);
-//        Adapter.notifyDataSetChanged();
+        //get the firebase auth
+        auth=token.getAuth();
+        ownArticleReference = token.getDatabaseReference().child("Users/"+auth.getCurrentUser().getEmail().replace(".","")+"/articles");
+
+        ownArticleListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //add the data in recyler view for own articles...
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        ownArticleReference.addChildEventListener(ownArticleListener);
 
     }
 

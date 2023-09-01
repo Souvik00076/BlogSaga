@@ -31,22 +31,22 @@ public class UserTokens {
     }
 
     public FirebaseDatabase getDatabase() {
-        return database;
+        return instance.database;
     }
 
     public FirebaseAuth getAuth() {
-        return auth;
+        return instance.auth;
     }
 
     public DatabaseReference getDatabaseReference() {
-        return databaseReference;
+        return instance.databaseReference;
     }
 
     public StorageReference getImageReference() {
-        return imageReference;
+        return instance.imageReference;
     }
 
     public FirebaseStorage getFirebaseStorage() {
-        return firebaseStorage;
+        return instance.firebaseStorage;
     }
 }

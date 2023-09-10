@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.blogsaga.utils.models.Articles;
+import com.example.blogsaga.utils.models.BaseArticle;
 import com.example.blogsaga.utils.models.User;
 import com.example.blogsaga.utils.models.UserToken;
 import com.example.blogsaga.utils.models.UserTokens;
@@ -24,7 +25,7 @@ import com.google.firebase.storage.UploadTask;
 public class DownloadUploadUtils {
     private static UserTokens tokens = UserTokens.getInstance();
     private static FirebaseAuth auth = tokens.getAuth();
-    private static DatabaseReference database = tokens.getDatabaseReference().child("Users/");
+    private static DatabaseReference database = tokens.getDatabaseReference();
     private static int IMAGE_ID = 0;
 
     private static String generateUniqueKey() {
@@ -38,10 +39,9 @@ public class DownloadUploadUtils {
         final String email = auth.getCurrentUser().getEmail().replace(".", "");
         UserTokens token = UserTokens.getInstance();
         String uniqueRef = generateUniqueKey();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference("articles/images/" + uniqueRef);
+        StorageReference storageRef = token.getFirebaseStorage().getReference("articles/images/" + uniqueRef);
         StorageReference imageRef = storageRef.child("my-image" + IMAGE_ID + ".jpg");
         IMAGE_ID++;
-
         imageRef.putBytes(articles.getImageBytes())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -53,9 +53,11 @@ public class DownloadUploadUtils {
                             public void onSuccess(Uri uri) {
                                 // The download URL is available
                                 // Do something with the download URL, such as storing it in a database
+                                Log.i("Why",uri+"");
                                 articles.setImageUri(uri);
-                                String uniqueKey = database.push().getKey();
-                                database.child("Articles/" + uniqueKey).setValue(articles)
+                                String uniqueKey = database.child("Articles").push().getKey();
+                                BaseArticle article=new BaseArticle(articles);
+                                 database.child("Articles/" + uniqueKey).setValue(article)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

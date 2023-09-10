@@ -1,10 +1,13 @@
 package com.example.blogsaga;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
+
 import com.example.blogsaga.fragments.CreatePage;
-
-
+import com.example.blogsaga.fragments.LoginFragment;
+import com.example.blogsaga.fragments.SignupFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -13,8 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        addFragment(new CreatePage());
+        addFragment(new LoginFragment());
 
     }
 

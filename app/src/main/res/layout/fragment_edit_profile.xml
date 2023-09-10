@@ -170,7 +170,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/logout_btn"
+            android:id="@+id/save_btn"
             style="@style/button_style"
             android:text="@string/btnLogOut"
             android:background="@drawable/design_widget_et"

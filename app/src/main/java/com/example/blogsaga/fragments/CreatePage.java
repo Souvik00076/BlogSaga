@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,7 +128,9 @@ public class CreatePage extends Fragment {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 imageMap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 byte[] imageData = baos.toByteArray();
+
                 Articles articles = new Articles(imageData, title, description);
+                Log.i("Why",articles.getImageBytes().length+"");
                 Intent uploadArticleServiceIntent = new Intent(getActivity(), UploadArticleService.class);
                 uploadArticleServiceIntent.putExtra("Add Article", articles);
                 requireActivity().startService(uploadArticleServiceIntent);
@@ -172,16 +175,12 @@ public class CreatePage extends Fragment {
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, Gallery_pick);
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Gallery_pick && resultCode == RESULT_OK && data != null) {
             imageuri = data.getData();
             imageInsertButton.setImageURI(imageuri);
-
         }
     }
-
-
 }

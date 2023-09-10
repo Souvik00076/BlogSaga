@@ -52,6 +52,8 @@ public class UploadArticleService extends Service {
         msg.arg1 = startId;
         Log.i("Articles Upload Service", "started");
         modelObj = (Articles) intent.getParcelableExtra("Add Article");
+        byte[] bal=modelObj.getImageBytes();
+        Log.i("Why",modelObj.getImageBytes().length+"");
         serviceHandler.sendMessage(msg);
         return START_STICKY;
     }

@@ -31,6 +31,7 @@ public class Articles implements Parcelable {
         title = in.readString();
         description = in.readString();
         ID = in.readString();
+        imageBytes=in.createByteArray();
     }
 
     public static final Creator<Articles> CREATOR = new Creator<Articles>() {

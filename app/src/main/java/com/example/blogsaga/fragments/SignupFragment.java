@@ -32,6 +32,7 @@ import com.example.blogsaga.utils.ErrorCodes;
 import com.example.blogsaga.utils.FirebaseUtilities.GeneralFirebaseUtiliities;
 import com.example.blogsaga.utils.GeneralUtilities;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
+import com.example.blogsaga.utils.models.userDetails;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -109,6 +110,11 @@ public class SignupFragment extends Fragment {
                     return;
                 }
                 Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onUpdate(userDetails details) {
+
             }
 
             @Override

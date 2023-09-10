@@ -22,6 +22,7 @@ import com.example.blogsaga.R;
 import com.example.blogsaga.utils.models.UserToken;
 import com.example.blogsaga.utils.ErrorCodes;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
+import com.example.blogsaga.utils.models.userDetails;
 
 
 public class LoginFragment extends Fragment {
@@ -66,6 +67,11 @@ public class LoginFragment extends Fragment {
         callbacks = new GeneralCallbacks() {
             @Override
             public void onSignUp(boolean flag, int errorCode) {
+            }
+
+            @Override
+            public void onUpdate(userDetails details) {
+
             }
 
             @Override

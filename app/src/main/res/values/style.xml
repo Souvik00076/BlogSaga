@@ -60,12 +60,23 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <style name="cardView_notification_style"> <!-- This is for home page -->
+        <item name="cardCornerRadius">@dimen/_24dp</item>
+        <item name="cardElevation">@dimen/_8dp</item>
+        <item name="android:layout_width">@dimen/_356dp</item>
+        <item name="android:layout_height">@dimen/_40dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
     <style name="circle_img" parent="">
         <item name="cornerSize">20%</item>
         <item name="android:layout_width">@dimen/_170dp</item>
         <item name="android:layout_height">@dimen/_170dp</item>
         <item name="android:layout_margin">@dimen/_16dp</item>
     </style>
+
+
     
     <style name="cardView_linear_layout_style"> <!-- In home page into cardView -->
         <item name="android:layout_width">match_parent</item>

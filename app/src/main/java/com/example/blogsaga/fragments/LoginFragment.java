@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onLogin(boolean flag, int errorCode) {
                 if (flag) {
-                    activity.addFragment(new HomePage());
+                    activity.addFragment(new EditProfile());
                     return;
                 }
                 Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();

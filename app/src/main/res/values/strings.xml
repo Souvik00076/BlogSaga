@@ -49,4 +49,8 @@
     <string name="selectTopic">Select Topic</string>
     <string name="setSchedule">Set schedule</string>
     <string name="allowComments">Allow comments</string>
+
+    <!-- for Notification page -->
+    <string name="Notification">Notification</string>
+
 </resources>

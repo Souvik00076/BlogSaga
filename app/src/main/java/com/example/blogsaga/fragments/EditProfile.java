@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
@@ -51,7 +52,8 @@ public class EditProfile extends Fragment {
     GeneralCallbacks callbacks;
     FloatingActionButton changeProfilePic;
     ShapeableImageView profile_pic;
-    EditText nameEt,phoneEt,emailEt,countryEt,dobEt;
+    EditText nameEt,phoneEt,countryEt,dobEt;
+    TextView emailEt;
     AppCompatButton save;
     private DatePickerDialog picker;
     private static User users = User.getInstance();
@@ -139,6 +141,29 @@ public class EditProfile extends Fragment {
             }
         });
 
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
+        String userID= auth.getUid();
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    userDetails details=snapshot.getValue(userDetails.class);
+                    if(details!=null){
+                        nameEt.setText(details.getName());
+                        emailEt.setText(details.getEmail());
+                        phoneEt.setText(details.getPhone());
+                        countryEt.setText(details.getCountry());
+                        dobEt.setText(details.getDob());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Database Error", error.getMessage());
+            }
+        });
 
     }
 
@@ -172,7 +197,14 @@ public class EditProfile extends Fragment {
                 String country=details.getCountry();
                 String email=details.getEmail();
                 String dob=details.getDob();
+
                 //TODO - Set the details here..by calling setter methods
+
+                nameEt.setText(name);
+                emailEt.setText(email);
+                phoneEt.setText(phone);
+                countryEt.setText(country);
+                dobEt.setText(dob);
             }
         };
     }

@@ -99,9 +99,13 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         ownArticleListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Articles articles = snapshot.getValue(Articles.class);
-                ownAdapter.setData(articles);
-                ownAdapter.notifyDataSetChanged();
+
+               for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                   Articles articles=dataSnapshot.getValue(Articles.class);
+                   dataset.add(articles);
+                   ownAdapter.setData(articles);
+               }
+               ownAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -126,7 +130,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     @Override
     public void onClick(Articles articles) {
-        Toast.makeText(getContext(), "hii", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "hii"+articles.getTitle(), Toast.LENGTH_SHORT).show();
     }
 
 

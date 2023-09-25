@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.blogsaga.MainActivity;
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.adapters.TabAdapter;
+import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
 import com.example.blogsaga.utils.models.userDetails;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,6 +39,8 @@ import com.squareup.picasso.Picasso;
 public class Profile extends Fragment {
     public LinearLayout editbtn;
     ShapeableImageView profile;
+    GeneralCallbacks callbacks;
+
     TextView UserName;
     ImageView back;
     private MainActivity activity;
@@ -120,6 +123,28 @@ public class Profile extends Fragment {
         profile=root.findViewById(R.id.profile_pic);
         back=root.findViewById(R.id.back_button);
         UserName=root.findViewById(R.id.User_name);
+        callbacks=new GeneralCallbacks() {
+            @Override
+            public void onSignUp(boolean flag, int errorCode) {
+
+            }
+
+            @Override
+            public void onLogin(boolean flag, int errorCode) {
+
+            }
+
+            @Override
+            public void onUpdate(userDetails details) {
+                String name=details.getName();
+                String phone=details.getPhone();
+                String country=details.getCountry();
+                String email=details.getEmail();
+                String dob=details.getDob();
+                //TODO - Set the details here..by calling setter methods
+                UserName.setText(name);
+            }
+        };
     }
 
     public void addFragment(Fragment fragment) {
@@ -155,7 +180,8 @@ public class Profile extends Fragment {
                 if(snapshot.exists()){
                     userDetails details=snapshot.getValue(userDetails.class);
                     if(details!=null){
-                        UserName.setText(details.getName());
+                       String user=details.getName();
+                       UserName.setText(user);
                     }
                 }
             }

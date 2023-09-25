@@ -36,7 +36,6 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     FloatingActionButton createbtn;
     ImageView notificationbtn, bookmarkbtn;
-
     RecyclerView recyclerView;
     LinearLayoutManager LayoutManager;
     List<Articles> dataset;

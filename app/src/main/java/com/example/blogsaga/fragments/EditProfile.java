@@ -199,7 +199,6 @@ public class EditProfile extends Fragment {
                 String dob=details.getDob();
 
                 //TODO - Set the details here..by calling setter methods
-
                 nameEt.setText(name);
                 emailEt.setText(email);
                 phoneEt.setText(phone);

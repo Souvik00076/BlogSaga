@@ -35,39 +35,31 @@ public class DownloadUploadUtils {
     }
 
     public static void uploadArticle(Articles articles) {
-
+        Log.i("upload articles called", "In upload article");
         final String email = auth.getCurrentUser().getEmail().replace(".", "");
         UserTokens token = UserTokens.getInstance();
         String uniqueRef = generateUniqueKey();
-        StorageReference storageRef = token.getFirebaseStorage().getReference("articles/images/" + uniqueRef);
-        StorageReference imageRef = storageRef.child("my-image" + IMAGE_ID + ".jpg");
-        IMAGE_ID++;
+        System.out.println(uniqueRef+ "What the fuck");
+        StorageReference storageRef = token.getFirebaseStorage().getReference("Users/"+email+"/articles/images/" + uniqueRef);
+        StorageReference imageRef = storageRef.child("my-image" + ".jpg");
         imageRef.putBytes(articles.getImageBytes())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // The image has been uploaded successfully
-                        Task<Uri> downloadUrlTask = taskSnapshot.getStorage().getDownloadUrl();
-                        downloadUrlTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                // The download URL is available
-                                // Do something with the download URL, such as storing it in a database
-                                Log.i("Why",uri+"");
-                                articles.setImageUri(uri);
-                                String uniqueKey = database.child("Articles").push().getKey();
-                                BaseArticle article=new BaseArticle(articles);
-                                 database.child("Articles/" + uniqueKey).setValue(article)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    database.child("Users/" + email + "/articles").setValue(uniqueKey);
-                                                }
-                                            }
-                                        });
-                            }
-                        });
+
+                        articles.setImageUri(uniqueRef);
+                        String uniqueKey = database.child("Articles").push().getKey();
+                        BaseArticle article = new BaseArticle(articles);
+                        database.child("Articles/" + uniqueKey).setValue(article)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            database.child("Users/" + email + "/articles").push().setValue(uniqueKey);
+                                        }
+                                    }
+                                });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

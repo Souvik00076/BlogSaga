@@ -133,7 +133,9 @@ public class CreatePage extends Fragment {
                 Log.i("Why",articles.getImageBytes().length+"");
                 Intent uploadArticleServiceIntent = new Intent(getActivity(), UploadArticleService.class);
                 uploadArticleServiceIntent.putExtra("Add Article", articles);
+                Log.i("Save Button","Clicked");
                 requireActivity().startService(uploadArticleServiceIntent);
+                ;
             }
         });
 

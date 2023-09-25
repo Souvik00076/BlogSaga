@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.blogsaga.R;
+import com.example.blogsaga.utils.adapters.UpdateArticlesAdapter;
 import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
 import com.example.blogsaga.utils.models.Articles;
 import com.example.blogsaga.utils.models.User;
@@ -36,9 +37,10 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     FloatingActionButton createbtn;
     ImageView notificationbtn, bookmarkbtn;
-    RecyclerView recyclerView;
+    RecyclerView ownRv;
+    UpdateArticlesAdapter ownAdapter;
     LinearLayoutManager LayoutManager;
-    List<Articles> dataset;
+    ArrayList<Articles> dataset;
     ChildEventListener ownArticleListener;
     DatabaseReference ownArticleReference;
     FirebaseAuth auth;
@@ -57,12 +59,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.recyclerview);
-        createbtn = view.findViewById(R.id.create_button);
-        notificationbtn = view.findViewById(R.id.notification);
-        bookmarkbtn = view.findViewById(R.id.bookmark);
-        initData();
-        initRecyclerview();
+        initRecyclerview(view);
 
         createbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,52 +81,48 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         });
     }
 
-    private void initRecyclerview() {
+    private void initRecyclerview(View view) {
+        dataset = new ArrayList<>();
+        createbtn = view.findViewById(R.id.create_button);
+        ownRv = view.findViewById(R.id.recyclerview);
+        notificationbtn = view.findViewById(R.id.notification);
+        bookmarkbtn = view.findViewById(R.id.bookmark);
+        ownAdapter = new UpdateArticlesAdapter(dataset);
         token = UserTokens.getInstance();
         LayoutManager = new LinearLayoutManager(requireContext());
         LayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        recyclerView.setLayoutManager(LayoutManager);
-        //get the firebase auth
-        auth=token.getAuth();
-        ownArticleReference = token.getDatabaseReference().child("Users/"+auth.getCurrentUser().getEmail().replace(".","")+"/articles");
+        ownRv.setAdapter(ownAdapter);
+        ownRv.setLayoutManager(LayoutManager);
+        auth = token.getAuth();
+        ownArticleReference = token.getDatabaseReference().child("Users/" + auth.getCurrentUser().getEmail().replace(".", "") + "/articles");
 
         ownArticleListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //add the data in recyler view for own articles...
+                Articles articles = snapshot.getValue(Articles.class);
+                ownAdapter.setData(articles);
+                ownAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         };
         ownArticleReference.addChildEventListener(ownArticleListener);
-
     }
 
-    private void initData() {
-        dataset = new ArrayList<>();
-        //dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
-        //dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
-        //dataset.add(new Articles(R.drawable.recentpic,R.drawable.recentpic,"Nasty fitness","8 days ago","5 tips for stay fit and healthy"));
-
-    }
 
     @Override
     public void onClick(Articles articles) {
@@ -143,6 +136,5 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.commit();
-
     }
 }

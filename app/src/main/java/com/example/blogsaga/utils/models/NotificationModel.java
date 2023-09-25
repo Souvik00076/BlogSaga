@@ -1,9 +1,8 @@
 package com.example.blogsaga.utils.models;
 
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class NotificationModel {
     String Timestamp,message,Username;

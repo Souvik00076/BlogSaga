@@ -7,12 +7,12 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class BaseArticle  {
-    private Uri imageUri;
+    private String imageUri;
     private String title;
     private String description;
     private String ID;
 
-    public BaseArticle(Uri imageUri, String title, String description) {
+    public BaseArticle(String imageUri, String title, String description) {
         this.imageUri = imageUri;
         this.title = title;
         this.description = description;
@@ -27,11 +27,11 @@ public class BaseArticle  {
 
 
 
-    public Uri getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 
-    public void setImageUri(Uri imageUri) {
+    public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
 

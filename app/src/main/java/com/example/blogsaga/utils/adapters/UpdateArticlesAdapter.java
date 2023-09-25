@@ -37,9 +37,8 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
         return 0;
     }
 
-    public void setDataSet(ArrayList<Articles> dataSet) {
-        this.dataSet = dataSet;
-        this.notifyDataSetChanged();
+    public void setData(Articles articles) {
+        dataSet.add(articles);
     }
 
     class ArticleHolder extends RecyclerView.ViewHolder {

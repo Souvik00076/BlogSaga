@@ -8,13 +8,13 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class Articles implements Parcelable {
-    private Uri imageUri;
+    private String imageUri;
     private String title;
     private String description;
     private String ID;
     private byte[] imageBytes;
 
-    public Articles(Uri imageUri, String title, String description) {
+    public Articles(String imageUri, String title, String description) {
         this.imageUri = imageUri;
         this.title = title;
         this.description = description;
@@ -31,7 +31,7 @@ public class Articles implements Parcelable {
         title = in.readString();
         description = in.readString();
         ID = in.readString();
-        imageBytes=in.createByteArray();
+        imageBytes = in.createByteArray();
     }
 
     public static final Creator<Articles> CREATOR = new Creator<Articles>() {
@@ -46,11 +46,11 @@ public class Articles implements Parcelable {
         }
     };
 
-    public Uri getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 
-    public void setImageUri(Uri imageUri) {
+    public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
 
@@ -90,7 +90,7 @@ public class Articles implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
-        parcel.writeParcelable(imageUri, i);
+        parcel.writeString(imageUri);
         parcel.writeString(title);
         parcel.writeString(description);
         parcel.writeString(ID);

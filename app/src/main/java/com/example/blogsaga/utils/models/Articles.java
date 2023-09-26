@@ -13,6 +13,7 @@ public class Articles implements Parcelable {
     private String description;
     private String ID;
     private byte[] imageBytes;
+    public Articles(){}
 
     public Articles(String imageUri, String title, String description) {
         this.imageUri = imageUri;

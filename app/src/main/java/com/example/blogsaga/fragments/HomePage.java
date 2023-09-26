@@ -29,6 +29,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +60,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initRecyclerview(view);
-
+        /*
         createbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,18 +79,21 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                 addFragment(new MyBookmark());
             }
         });
+
+         */
     }
 
     private void initRecyclerview(View view) {
         dataset = new ArrayList<>();
-        createbtn = view.findViewById(R.id.create_button);
-        ownRv = view.findViewById(R.id.recyclerview);
+        // createbtn = view.findViewById(R.id.create_button);
+        ownRv = view.findViewById(R.id.urartclerecyclerview);
         notificationbtn = view.findViewById(R.id.notification);
-        bookmarkbtn = view.findViewById(R.id.bookmark);
+        //bookmarkbtn = view.findViewById(R.id.bookmark);
         ownAdapter = new UpdateArticlesAdapter(dataset);
         token = UserTokens.getInstance();
-        LayoutManager = new LinearLayoutManager(requireContext());
+        LayoutManager = new LinearLayoutManager(getContext());
         LayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        System.out.println("Adapter attached here");
         ownRv.setAdapter(ownAdapter);
         ownRv.setLayoutManager(LayoutManager);
         auth = token.getAuth();
@@ -99,13 +102,24 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         ownArticleListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                final String articleNumber = snapshot.getValue(String.class);
+                System.out.println(articleNumber);
+                DatabaseReference reference = token.getDatabaseReference().child("Articles/" + articleNumber);
+                reference.
+                        addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                System.out.println("This guy got called");
+                                Articles article = snapshot.getValue(Articles.class);
+                                ownAdapter.setData(article);
+                                ownAdapter.notifyDataSetChanged();
+                            }
 
-               for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                   Articles articles=dataSnapshot.getValue(Articles.class);
-                   dataset.add(articles);
-                   ownAdapter.setData(articles);
-               }
-               ownAdapter.notifyDataSetChanged();
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
             }
 
             @Override
@@ -130,7 +144,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     @Override
     public void onClick(Articles articles) {
-        Toast.makeText(getContext(), "hii"+articles.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "hii" + articles.getTitle(), Toast.LENGTH_SHORT).show();
     }
 
 

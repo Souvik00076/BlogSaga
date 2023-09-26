@@ -60,13 +60,14 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*
+
         createbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addFragment(new CreatePage());
             }
         });
+        /*
         notificationbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,9 +86,9 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
 
     private void initRecyclerview(View view) {
         dataset = new ArrayList<>();
-        // createbtn = view.findViewById(R.id.create_button);
+         createbtn = view.findViewById(R.id.create_button);
         ownRv = view.findViewById(R.id.urartclerecyclerview);
-        notificationbtn = view.findViewById(R.id.notification);
+//        notificationbtn = view.findViewById(R.id.notification);
         //bookmarkbtn = view.findViewById(R.id.bookmark);
         ownAdapter = new UpdateArticlesAdapter(dataset);
         token = UserTokens.getInstance();

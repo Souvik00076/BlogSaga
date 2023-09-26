@@ -52,7 +52,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home_page, container, false);
-
+        initRecyclerview(root);
         return root;
     }
 

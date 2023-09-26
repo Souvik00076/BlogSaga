@@ -3,6 +3,7 @@ package com.example.blogsaga.utils.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.callbacks.RecyclerCallbacks;
 import com.example.blogsaga.utils.models.Articles;
+import com.example.blogsaga.utils.models.UserTokens;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +43,7 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
 
     @Override
     public void onBindViewHolder(@NonNull ArticleHolder holder, int position) {
-     Articles articles=dataSet.get(position);
-     holder.aTitle.setText(articles.getTitle());
-     holder.article_image.setImageBitmap(holder.byteArrayToBitmap(articles.getImageBytes()));
+        holder.bind(dataSet.get(position));
     }
 
     @Override
@@ -54,14 +59,36 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
     class ArticleHolder extends RecyclerView.ViewHolder {
         private TextView aTitle;
         private ShapeableImageView article_image;
+
         public ArticleHolder(@NonNull View itemView) {
             super(itemView);
-            aTitle=itemView.findViewById(R.id.article_title);
-            article_image=itemView.findViewById(R.id.article_image);
+            aTitle = itemView.findViewById(R.id.article_title);
+            article_image = itemView.findViewById(R.id.article_image);
         }
 
-        public  Bitmap byteArrayToBitmap(byte[] byteArray) {
+        public Bitmap byteArrayToBitmap(byte[] byteArray) {
             return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        }
+
+        public void bind(final Articles articles) {
+            aTitle.setText(articles.getTitle());
+            String path = "Users/" + UserTokens.getInstance().
+                    getAuth().getCurrentUser().
+                    getEmail().
+                    replace(".", "") +
+                    "/articles/images/" + articles.getImageUri() + "/";
+            StorageReference storageReference = UserTokens.getInstance().getImageReference().child(path);
+            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get()
+                            .load(uri)
+                            .placeholder(R.drawable.back_app) // Placeholder image while loading
+                            .error(R.drawable.back_app) // Error image if download fails
+                            .into(article_image);
+                }
+            });
+
         }
 
     }

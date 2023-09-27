@@ -56,7 +56,7 @@
         <item name="cardCornerRadius">@dimen/_24dp</item>
         <item name="cardElevation">@dimen/_8dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_123dp</item>
+        <item name="android:layout_height">@dimen/_128dp</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 

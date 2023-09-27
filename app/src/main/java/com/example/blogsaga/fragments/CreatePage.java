@@ -8,12 +8,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,18 +22,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.blogsaga.R;
-import com.example.blogsaga.utils.FirebaseUtilities.DownloadUploadUtils;
 import com.example.blogsaga.utils.GeneralUtilities;
 import com.example.blogsaga.utils.models.Articles;
 import com.example.blogsaga.utils.services.UploadArticleService;
-
 import java.io.ByteArrayOutputStream;
-import java.util.Objects;
 
 
 public class CreatePage extends Fragment {
@@ -134,6 +126,7 @@ public class CreatePage extends Fragment {
                 Intent uploadArticleServiceIntent = new Intent(getActivity(), UploadArticleService.class);
                 uploadArticleServiceIntent.putExtra("Add Article", articles);
                 Log.i("Save Button","Clicked");
+                Toast.makeText(getContext(), "Article is Published", Toast.LENGTH_SHORT).show();
                 requireActivity().startService(uploadArticleServiceIntent);
                 ;
             }

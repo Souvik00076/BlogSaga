@@ -57,18 +57,17 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
 
 
     class ArticleHolder extends RecyclerView.ViewHolder {
-        private TextView aTitle;
-        private ShapeableImageView article_image;
+        private TextView aTitle,account_name;
+        private ShapeableImageView article_image,accoun_img;
 
         public ArticleHolder(@NonNull View itemView) {
             super(itemView);
             aTitle = itemView.findViewById(R.id.article_title);
             article_image = itemView.findViewById(R.id.article_image);
+            account_name=itemView.findViewById(R.id.client_AC_id);
+            accoun_img=itemView.findViewById(R.id.client_AC_image);
         }
 
-        public Bitmap byteArrayToBitmap(byte[] byteArray) {
-            return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        }
 
         public void bind(final Articles articles) {
             aTitle.setText(articles.getTitle());

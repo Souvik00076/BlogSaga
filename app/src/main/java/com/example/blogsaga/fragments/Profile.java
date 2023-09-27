@@ -43,7 +43,6 @@ public class Profile extends Fragment {
 
     TextView UserName;
     ImageView back;
-    private MainActivity activity;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     FirebaseAuth auth=FirebaseAuth.getInstance();

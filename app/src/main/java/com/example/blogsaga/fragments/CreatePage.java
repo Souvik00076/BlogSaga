@@ -126,6 +126,7 @@ public class CreatePage extends Fragment {
                 Intent uploadArticleServiceIntent = new Intent(getActivity(), UploadArticleService.class);
                 uploadArticleServiceIntent.putExtra("Add Article", articles);
                 Log.i("Save Button","Clicked");
+                Toast.makeText(getContext(), "Article is Published", Toast.LENGTH_SHORT).show();
                 requireActivity().startService(uploadArticleServiceIntent);
                 ;
             }

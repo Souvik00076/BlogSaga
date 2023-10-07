@@ -25,4 +25,16 @@
         android:textAllCaps="false"
         style="@style/button_style" />
 
+    <TextView
+        android:id="@+id/No_account"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_28dp"
+        android:layout_marginTop="@dimen/_12dp"
+        android:text="@string/Have_no_account"
+        android:textSize="@dimen/_17sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/_4dp"
+        />
+
 </LinearLayout>

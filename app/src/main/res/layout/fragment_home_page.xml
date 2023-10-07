@@ -8,6 +8,24 @@
     tools:context=".fragments.HomePage">
 
     <ImageView
+        android:layout_width="@dimen/_28dp"
+        android:layout_height="@dimen/_28dp"
+        android:id="@+id/bookmark"
+        android:src="@drawable/baseline_bookmark_24"
+        android:layout_marginEnd="@dimen/_32dp"
+        android:layout_marginTop="@dimen/_40dp"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:layout_width="@dimen/_28dp"
+        android:layout_height="@dimen/_28dp"
+        android:id="@+id/notification"
+        android:src="@drawable/baseline_notifications_24"
+        android:layout_marginEnd="@dimen/_36dp"
+        android:layout_marginTop="@dimen/_40dp"
+        android:layout_alignEnd="@+id/bookmark"/>
+
+    <ImageView
 
         android:layout_width="@dimen/_198dp"
         android:layout_height="@dimen/_48dp"

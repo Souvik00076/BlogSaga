@@ -43,7 +43,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
     UpdateArticlesAdapter ownAdapter;
     UpdateRecentAdapter recentAdapter;
     LinearLayoutManager LayoutManager,recentLayoutManager;
-    ArrayList<Articles> dataset;
+    ArrayList<Articles> dataset,recentset;
     ChildEventListener ownArticleListener,recentArticlesListner;
     DatabaseReference ownArticleReference,recentArticleReference;
     FirebaseAuth auth;
@@ -69,13 +69,13 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                 addFragment(new CreatePage());
             }
         });
-        /*
-        notificationbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addFragment(new Notification());
-            }
-        });
+
+//        notificationbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addFragment(new Notification());
+//            }
+//        });
         bookmarkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,16 +83,16 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
             }
         });
 
-         */
     }
 
     private void initRecyclerview(View view) {
         dataset = new ArrayList<>();
+        recentset=new ArrayList<>();
         createbtn = view.findViewById(R.id.create_button);
         ownRv = view.findViewById(R.id.urartclerecyclerview);
         recentRv=view.findViewById(R.id.recent_Recyclerview);
 //        notificationbtn = view.findViewById(R.id.notification);
-        //bookmarkbtn = view.findViewById(R.id.bookmark);
+        bookmarkbtn = view.findViewById(R.id.bookmark);
         ownAdapter = new UpdateArticlesAdapter(dataset);
         recentAdapter=new UpdateRecentAdapter(dataset,20);
         token = UserTokens.getInstance();
@@ -107,7 +107,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         recentRv.setLayoutManager(recentLayoutManager);  //this is add by me
         auth = token.getAuth();
         ownArticleReference = token.getDatabaseReference().child("Users/" + auth.getCurrentUser().getEmail().replace(".", "") + "/articles");
-        recentArticleReference= token.getDatabaseReference().child("Articles/");
+        recentArticleReference= token.getDatabaseReference().child("Articles");
         ownArticleListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -120,8 +120,10 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 System.out.println("This guy got called 120");
                                 Articles article = snapshot.getValue(Articles.class);
-                                ownAdapter.setData(article);
-                                ownAdapter.notifyDataSetChanged();
+                                if(article!=null) {
+                                    ownAdapter.setData(article);
+                                    ownAdapter.notifyDataSetChanged();
+                                }
                             }
 
                             @Override
@@ -153,14 +155,16 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         recentArticlesListner=new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                recentArticleReference.
+                        recentArticleReference.
                         addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 System.out.println("This guy got called 164");
                                 Articles RecentArticle = snapshot.getValue(Articles.class);
-                                recentAdapter.setData(RecentArticle);
-                                recentAdapter.notifyDataSetChanged();
+                                if(RecentArticle!=null) {
+                                    recentAdapter.setData(RecentArticle);
+                                    recentAdapter.notifyDataSetChanged();
+                                }
                             }
 
                             @Override

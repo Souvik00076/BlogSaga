@@ -8,6 +8,8 @@
     <string name="confPassword_hint">Confirm Password</string>
     <string name="btnLogin">Log in</string>
     <string name="btnSignUp">Sign up</string>
+    <string name="Already_account">Already have an account? Log in</string>
+    <string name="Have_no_account">Do not have account? Sign up</string>
 
 
     <!-- For get started page -->
@@ -53,4 +55,6 @@
     <!-- for Notification page -->
     <string name="Notification">Notification</string>
 
+    <!--for Bookmark Page-->
+    <string name="My_bookmark">My bookmark</string>
 </resources>

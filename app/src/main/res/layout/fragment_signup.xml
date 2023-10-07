@@ -54,5 +54,16 @@
         android:text="@string/btnSignUp"
         android:textAllCaps="false" />
 
+    <TextView
+        android:id="@+id/already_account"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_28dp"
+        android:layout_marginTop="@dimen/_12dp"
+        android:text="@string/Already_account"
+        android:textSize="@dimen/_17sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/_3dp"
+        />
 
 </LinearLayout>

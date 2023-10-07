@@ -2,6 +2,6 @@ package com.example.blogsaga.utils.callbacks;
 
 import com.example.blogsaga.utils.models.Articles;
 
-public interface RecyclerPublishedCallbacks {
+public interface RecyclerBookmarkCallbacks {
     void onClick(Articles articles);
 }

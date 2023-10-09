@@ -41,6 +41,7 @@ public class MyBookmark extends Fragment {
     ArrayList<Articles> dataset;
     ChildEventListener bookmarkListner;
     DatabaseReference bookMarkReference;
+    DatabaseReference articleReference;
     UserTokens token;
     FirebaseAuth auth;
 
@@ -79,38 +80,27 @@ public class MyBookmark extends Fragment {
         bookMarkView.setLayoutManager(layoutManager);
         bookMarkView.setAdapter(bookmarkAdapter);
         auth = token.getAuth();
-
-        bookMarkReference= token.getDatabaseReference().child("Articles/");
+        articleReference=token.getDatabaseReference().child("Articles/");
+        bookMarkReference= token.getDatabaseReference().child("Users/"+auth.getCurrentUser().getEmail()
+                .replace(".","")+"/bookmarks");
         bookmarkListner=new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                bookMarkReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                final String articleKey=snapshot.getValue(String.class);
+                articleReference.child(articleKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String key=snapshot.getValue(String.class);
-                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Articles/"+key);
-                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                Articles article = snapshot.getValue(Articles.class);
-                                if(article!=null) {
-                                    bookmarkAdapter.setData(article);
-                                    bookmarkAdapter.notifyDataSetChanged();
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-                        //fetch and data and pass it to the book mark adapter
+                        final Articles articles=snapshot.getValue(Articles.class);
+                        System.out.println(articles.getTitle());
+                        System.out.println(articles.getDescription());
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
+
             }
 
             @Override

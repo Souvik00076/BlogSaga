@@ -85,11 +85,9 @@ public class MyBookmark extends Fragment {
                 bookMarkReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String key=snapshot.getValue(String.class);
                         Articles bookmarArticles=snapshot.getValue(Articles.class);
-                        if(bookmarArticles!=null){
-                            bookmarkAdapter.setData(bookmarArticles);
-                            bookmarkAdapter.notifyDataSetChanged();
-                        }
+                        //fetch and data and pass it to the book mark adapter
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

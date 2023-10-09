@@ -71,7 +71,7 @@ public class UpdateRecentAdapter extends RecyclerView.Adapter<UpdateRecentAdapte
                     String email= auth.getCurrentUser().getEmail().replace(".","");
                     DatabaseReference reference= tokens.getDatabaseReference();
                     String uniquekey=articles.getId();
-                    reference.child("Users/"+email+"/bookmarks/"+System.currentTimeMillis()).push().setValue(uniquekey).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    reference.child("Users/"+email+"/bookmarks/").push().setValue(uniquekey).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(itemView.getContext(), "Article save to Bookmark", Toast.LENGTH_SHORT).show();

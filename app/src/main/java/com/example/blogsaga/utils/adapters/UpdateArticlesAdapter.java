@@ -76,11 +76,11 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
                     getEmail().
                     replace(".", "") +
                     "/articles/images/" + articles.getImageUri() + "/";
+            System.out.println(articles.getImageUri());
             StorageReference storageReference = UserTokens.getInstance().getImageReference().child(path);
             storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    System.out.println(uri);
                     Picasso.get()
                             .load(uri)
                             .placeholder(R.drawable.back_app) // Placeholder image while loading

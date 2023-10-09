@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -86,20 +84,28 @@ public class MyBookmark extends Fragment {
         bookmarkListner=new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                final String articleKey=snapshot.getValue(String.class);
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    System.out.println(" 88");
+                final String articleKey=dataSnapshot.getValue(String.class);
                 articleReference.child(articleKey).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        final Articles articles=snapshot.getValue(Articles.class);
-                        System.out.println(articles.getTitle());
-                        System.out.println(articles.getDescription());
+                        //fetch and data and pass it to the book mark adapter
+                            final Articles articles = snapshot.getValue(Articles.class);
+                            System.out.println(articles.getTitle());
+                            System.out.println(articles.getDescription());
+                            if (dataset != null) {
+                                dataset.add(articles);
+                                bookmarkAdapter.setData(articles);
+                            }
+                        bookmarkAdapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });
+                });}
 
             }
 
@@ -132,5 +138,5 @@ public class MyBookmark extends Fragment {
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     fragmentTransaction.replace(R.id.container, fragment);
     fragmentTransaction.commit();
-                            }
+    }
 }

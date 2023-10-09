@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.blogsaga.MainActivity;
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.adapters.TabAdapter;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
@@ -36,17 +35,23 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class Profile extends Fragment {
+public class UserDetailsBySearch extends Fragment {
+
     public LinearLayout editbtn;
     ShapeableImageView profile;
     GeneralCallbacks callbacks;
 
-    TextView UserName;
+    TextView UserName,Useremail;
     ImageView back;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     FirebaseAuth auth=FirebaseAuth.getInstance();
     private StorageReference imageRef;
+    String uniqueKey;
+
+    public UserDetailsBySearch(String uniqueKey) {
+        this.uniqueKey=uniqueKey;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,10 +62,9 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=inflater.inflate(R.layout.fragment_profile, container, false);
+        View root=inflater.inflate(R.layout.fragment_user_details_by_search, container, false);
         init(root);
-        String email = auth.getCurrentUser().getEmail().toString();
-        final String uniqueKey = email.replace(".", "");
+
         imageRef= FirebaseStorage.getInstance().getReference().child("Users/"+uniqueKey+"/info/dp.jpg");
         loadProfilePicture(uniqueKey);
         tabLayout.addTab(tabLayout.newTab().setText("Drafts"));
@@ -106,7 +110,7 @@ public class Profile extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                addFragment(new HomePage());
             }
         });
 
@@ -120,8 +124,9 @@ public class Profile extends Fragment {
         tabLayout = root.findViewById(R.id.tab_layout);
         viewPager2 = root.findViewById(R.id.viewPager2);
         profile=root.findViewById(R.id.profile_pic);
-        back=root.findViewById(R.id.back_button);
+        back=root.findViewById(R.id.back_button_Usv);
         UserName=root.findViewById(R.id.User_name);
+        Useremail=root.findViewById(R.id.userEmailTv);
         callbacks=new GeneralCallbacks() {
             @Override
             public void onSignUp(boolean flag, int errorCode) {
@@ -174,8 +179,9 @@ public class Profile extends Fragment {
                 if(snapshot.exists()){
                     userDetails details=snapshot.getValue(userDetails.class);
                     if(details!=null){
-                       String user=details.getName();
-                       UserName.setText(user);
+                        String user=details.getName();
+                        UserName.setText(user);
+                        Useremail.setText(details.getEmail());
                     }
                 }
             }
@@ -186,5 +192,4 @@ public class Profile extends Fragment {
             }
         });
     }
-
 }

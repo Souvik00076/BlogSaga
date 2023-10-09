@@ -180,11 +180,25 @@
         android:id="@+id/create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/_140dp"
         android:layout_marginTop="@dimen/_12dp"
         android:layout_below="@+id/urartclerecyclerview"
         android:backgroundTint="@color/peach"
         android:src="@drawable/baseline_add_circle_24"
+        app:maxImageSize="@dimen/_32dp"
+        app:elevation="@dimen/_8dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_12dp"
+        android:layout_marginStart="@dimen/_12dp"
+        android:layout_below="@+id/urartclerecyclerview"
+        android:layout_toRightOf="@+id/create_button"
+        android:backgroundTint="@color/peach"
+        android:src="@drawable/search"
         app:maxImageSize="@dimen/_32dp"
         app:elevation="@dimen/_8dp"/>
 </RelativeLayout>

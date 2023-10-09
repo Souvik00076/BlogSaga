@@ -57,4 +57,8 @@
 
     <!--for Bookmark Page-->
     <string name="My_bookmark">My bookmark</string>
+
+    <!--for Search page-->
+    <string name="Search_hint">Search here</string>
+
 </resources>

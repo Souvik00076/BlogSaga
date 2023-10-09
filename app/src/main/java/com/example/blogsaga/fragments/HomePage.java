@@ -37,7 +37,7 @@ import java.util.List;
 
 public class HomePage extends Fragment implements RecyclerCallbacks {
 
-    FloatingActionButton createbtn;
+    FloatingActionButton createbtn,searchBtn;
     ImageView notificationbtn, bookmarkbtn;
     RecyclerView ownRv,recentRv;
     UpdateArticlesAdapter ownAdapter;
@@ -82,6 +82,12 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                 addFragment(new MyBookmark());
             }
         });
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFragment(new Search());
+            }
+        });
 
     }
 
@@ -89,6 +95,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         dataset = new ArrayList<>();
         recentset=new ArrayList<>();
         createbtn = view.findViewById(R.id.create_button);
+        searchBtn=view.findViewById(R.id.search_btn);
         ownRv = view.findViewById(R.id.urartclerecyclerview);
         recentRv=view.findViewById(R.id.recent_Recyclerview);
 //        notificationbtn = view.findViewById(R.id.notification);

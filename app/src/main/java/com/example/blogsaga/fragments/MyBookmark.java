@@ -87,7 +87,7 @@ public class MyBookmark extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 final String articleKey=snapshot.getValue(String.class);
-                articleReference.child(articleKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                articleReference.child(articleKey).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         //fetch and data and pass it to the book mark adapter

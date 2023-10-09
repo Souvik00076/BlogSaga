@@ -86,7 +86,6 @@ public class MyBookmark extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String key=snapshot.getValue(String.class);
-                        Articles bookmarArticles=snapshot.getValue(Articles.class);
                         //fetch and data and pass it to the book mark adapter
                     }
                     @Override

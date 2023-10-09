@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blogsaga.MainActivity;
@@ -41,6 +42,7 @@ public class SignupFragment extends Fragment {
     private AppCompatButton clickImageButton;
     private EditText emailEt, passwordEt, confPasswordEt;
     private Button signUpButton;
+    private TextView haveAccount;
     private GeneralCallbacks callbacks;
     private MainActivity activity;
     @Override
@@ -90,6 +92,13 @@ public class SignupFragment extends Fragment {
                 imageSelectionLauncher.launch("image/*");
             }
         });
+
+        haveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.addFragment(new LoginFragment());
+            }
+        });
         return root;
     }
 
@@ -101,12 +110,14 @@ public class SignupFragment extends Fragment {
         passwordEt = root.findViewById(R.id.txt_password);
         confPasswordEt = root.findViewById(R.id.txt_confirm_password);
         signUpButton = root.findViewById(R.id.btn_sign_up);
+        haveAccount=root.findViewById(R.id.already_account);
         callbacks = new GeneralCallbacks() {
             @Override
             public void onSignUp(boolean flag, int errorCode) {
 
                 if (flag) {
                     activity.addFragment(new LoginFragment());
+                    Toast.makeText(activity, "Verify your email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Toast.makeText(getContext(), ErrorCodes.getMap().get(errorCode), Toast.LENGTH_SHORT).show();

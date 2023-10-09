@@ -2,65 +2,130 @@ package com.example.blogsaga.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.blogsaga.R;
+import com.example.blogsaga.utils.adapters.UpdateBookmarkAdapter;
+import com.example.blogsaga.utils.models.Articles;
+import com.example.blogsaga.utils.models.UserTokens;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyBookmark#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+                        ////////////////Not checked//////////
 public class MyBookmark extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    ImageView backBookmark;
+    RecyclerView bookMarkView;
+    LinearLayoutManager layoutManager;
+    UpdateBookmarkAdapter bookmarkAdapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    ArrayList<Articles> dataset;
+    ChildEventListener bookmarkListner;
+    DatabaseReference bookMarkReference;
+    UserTokens token;
+    FirebaseAuth auth;
 
-    public MyBookmark() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyBookmark.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyBookmark newInstance(String param1, String param2) {
-        MyBookmark fragment = new MyBookmark();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_bookmark, container, false);
+        View root= inflater.inflate(R.layout.fragment_my_bookmark, container, false);
+        init(root);
+
+        backBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFragment(new HomePage());
+            }
+        });
+        
+        return root;
     }
+
+    private void init(View root) {
+        backBookmark=root.findViewById(R.id.back_button);
+        bookMarkView=root.findViewById(R.id.bookmark_view);
+        dataset=new ArrayList<>();
+        token = UserTokens.getInstance();
+        bookmarkAdapter=new UpdateBookmarkAdapter(dataset);
+        layoutManager=new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        bookMarkView.setLayoutManager(layoutManager);
+        bookMarkView.setAdapter(bookmarkAdapter);
+        auth = token.getAuth();
+
+        bookMarkReference= token.getDatabaseReference().child("Articles/");
+        bookmarkListner=new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                bookMarkReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Articles bookmarArticles=snapshot.getValue(Articles.class);
+                        if(bookmarArticles!=null){
+                            bookmarkAdapter.setData(bookmarArticles);
+                            bookmarkAdapter.notifyDataSetChanged();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        bookMarkReference.addChildEventListener(bookmarkListner);
+
+    }
+    public void addFragment(Fragment fragment) {
+    FragmentManager fragmentManager = getFragmentManager();
+    assert fragmentManager != null;
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    fragmentTransaction.replace(R.id.container, fragment);
+    fragmentTransaction.commit();
+                            }
 }

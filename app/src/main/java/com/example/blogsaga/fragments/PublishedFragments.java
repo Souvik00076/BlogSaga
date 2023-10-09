@@ -15,13 +15,12 @@ import android.view.ViewGroup;
 import com.example.blogsaga.R;
 //import com.example.blogsaga.utils.adapters.UpdateDraftAdapter;
 //import com.example.blogsaga.utils.adapters.UpdatePublishedAdapter;
-import com.example.blogsaga.utils.callbacks.RecyclerPublishedCallbacks;
+import com.example.blogsaga.utils.callbacks.RecyclerBookmarkCallbacks;
 import com.example.blogsaga.utils.models.Articles;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PublishedFragments extends Fragment implements RecyclerPublishedCallbacks {
+public class PublishedFragments extends Fragment implements RecyclerBookmarkCallbacks {
 
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;

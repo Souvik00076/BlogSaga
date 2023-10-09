@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blogsaga.MainActivity;
@@ -28,6 +29,7 @@ import com.example.blogsaga.utils.models.userDetails;
 public class LoginFragment extends Fragment {
     private EditText emailEt, passwordEt;
     private Button loginButton;
+    private TextView noAccount;
     private GeneralCallbacks callbacks;
     private MainActivity activity;
 
@@ -57,6 +59,13 @@ public class LoginFragment extends Fragment {
                 loginUser(token,callbacks);
             }
         });
+
+        noAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.addFragment(new SignupFragment());
+            }
+        });
         return root;
     }
 
@@ -64,6 +73,7 @@ public class LoginFragment extends Fragment {
         emailEt = root.findViewById(R.id.txt_email);
         passwordEt = root.findViewById(R.id.txt_password);
         loginButton = root.findViewById(R.id.btn_login);
+        noAccount=root.findViewById(R.id.No_account);
         callbacks = new GeneralCallbacks() {
             @Override
             public void onSignUp(boolean flag, int errorCode) {

@@ -70,7 +70,9 @@ public class Articles implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    public void setId(String ID){
+        this.ID=ID;
+    }
     public String getId() {
         return ID;
     }

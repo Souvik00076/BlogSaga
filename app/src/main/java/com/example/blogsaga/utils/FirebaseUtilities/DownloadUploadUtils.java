@@ -39,8 +39,9 @@ public class DownloadUploadUtils {
         final String email = auth.getCurrentUser().getEmail().replace(".", "");
         UserTokens token = UserTokens.getInstance();
         String uniqueRef = generateUniqueKey();
-        System.out.println(uniqueRef+ "What the fuck");
-        StorageReference storageRef = token.getFirebaseStorage().getReference("Users/"+email+"/articles/images/" + uniqueRef);
+        articles.setId(uniqueRef);
+        System.out.println(uniqueRef + "What the fuck");
+        StorageReference storageRef = token.getFirebaseStorage().getReference("Users/" + email + "/articles/images/" + uniqueRef);
         StorageReference imageRef = storageRef.child("my-image" + ".jpg");
         imageRef.putBytes(articles.getImageBytes())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

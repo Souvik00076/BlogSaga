@@ -122,6 +122,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                                 Articles article = snapshot.getValue(Articles.class);
                                 if(article!=null) {
                                     ownAdapter.setData(article);
+                                    System.out.println(article.getImageUri()+" 125");
                                     ownAdapter.notifyDataSetChanged();
                                 }
                             }

@@ -94,6 +94,7 @@ public class MyBookmark extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 Articles article = snapshot.getValue(Articles.class);
                                 if(article!=null) {
+                                    System.out.println(article.getId()+" 97");
                                     bookmarkAdapter.setData(article);
                                     bookmarkAdapter.notifyDataSetChanged();
                                 }

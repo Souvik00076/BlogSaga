@@ -5,23 +5,49 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NotificationModel {
-    String Timestamp,message,Username;
-     public NotificationModel(Articles articles){
-         message=""+articles.getTitle()+"added";
-         Date currentTime=new Date();
-         SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
-         Timestamp=dateFormat.format(currentTime);
-         Username= FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toString();
-     }
-    public String getMessage() {
-        return message;
+    private String userId, text, postid;
+    private boolean ispost;
+
+    public NotificationModel() {
     }
 
-    public String getTimestamp() {
-        return Timestamp;
+    public NotificationModel(String userId, String text, String postid, boolean ispost) {
+        this.userId = userId;
+        this.text = text;
+        this.postid = postid;
+        this.ispost = ispost;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getPostid() {
+        return postid;
+    }
+
+    public void setPostid(String postid) {
+        this.postid = postid;
+    }
+
+    public boolean isIspost() {
+        return ispost;
+    }
+
+    public void setIspost(boolean ispost) {
+        this.ispost = ispost;
     }
 }
+

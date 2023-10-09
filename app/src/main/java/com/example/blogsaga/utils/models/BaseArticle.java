@@ -18,11 +18,11 @@ public class BaseArticle  {
         this.description = description;
     }
 
-    public BaseArticle(Articles articles) {
+    public BaseArticle(Articles articles,String ID) {
         imageUri = articles.getImageUri();
         title = articles.getTitle();
         description = articles.getDescription();
-        ID = articles.getId();
+        this.ID = ID;
     }
 
 

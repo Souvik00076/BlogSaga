@@ -39,7 +39,7 @@ public class DownloadUploadUtils {
         final String email = auth.getCurrentUser().getEmail().replace(".", "");
         UserTokens token = UserTokens.getInstance();
         String uniqueRef = generateUniqueKey();
-        articles.setId(uniqueRef);
+
         System.out.println(uniqueRef + "What the fuck");
         StorageReference storageRef = token.getFirebaseStorage().getReference("Users/" + email + "/articles/images/" + uniqueRef);
         StorageReference imageRef = storageRef.child("my-image" + ".jpg");
@@ -51,7 +51,8 @@ public class DownloadUploadUtils {
 
                         articles.setImageUri(uniqueRef);
                         String uniqueKey = database.child("Articles").push().getKey();
-                        BaseArticle article = new BaseArticle(articles);
+                        BaseArticle article = new BaseArticle(articles,uniqueKey);
+
                         database.child("Articles/" + uniqueKey).setValue(article)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

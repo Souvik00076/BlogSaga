@@ -39,7 +39,6 @@ public class Notification extends Fragment implements NotificationCallbacks {
     DatabaseReference reference;
     FirebaseAuth auth=FirebaseAuth.getInstance();
     ChildEventListener listener;
-ArrayList<NotificationModel> dataset;
 
 
     @Override
@@ -62,8 +61,8 @@ ArrayList<NotificationModel> dataset;
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Articles articles=snapshot.getValue(Articles.class);
-                NotificationModel model=new NotificationModel(articles);
-                dataset.add(model);
+                NotificationModel model=new NotificationModel();
+                notificationlist.add(model);
                 adapter.notifyDataSetChanged();
             }
 

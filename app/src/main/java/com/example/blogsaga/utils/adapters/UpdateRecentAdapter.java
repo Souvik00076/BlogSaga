@@ -70,7 +70,7 @@ public class UpdateRecentAdapter extends RecyclerView.Adapter<UpdateRecentAdapte
                     FirebaseAuth auth=tokens.getAuth();
                     String email= auth.getCurrentUser().getEmail().replace(".","");
                     DatabaseReference reference= tokens.getDatabaseReference();
-                    String uniquekey=reference.child("Articles").push().getKey();
+                    String uniquekey=articles.getId();
                     reference.child("Users/"+email+"/bookmarks/"+System.currentTimeMillis()).push().setValue(uniquekey).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {

@@ -86,20 +86,36 @@ public class MyBookmark extends Fragment {
         bookmarkListner=new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
                 final String articleKey=snapshot.getValue(String.class);
-                articleReference.child(articleKey).addValueEventListener(new ValueEventListener() {
+                articleReference.child(articleKey).addChildEventListener(new ChildEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        final Articles articles=snapshot.getValue(Articles.class);
-                        System.out.println(articles.getTitle());
-                        System.out.println(articles.getDescription());
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        Articles articles=snapshot.getValue(Articles.class);
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });
+                })
+
 
             }
 

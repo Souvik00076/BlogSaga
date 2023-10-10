@@ -75,24 +75,19 @@ public class DownloadUploadUtils {
 
     public static void updationFollowerFollowing(final String email){
        final String ownerEmail=auth.getCurrentUser().getEmail().replace(".","");
-            database.child("Users/"+ownerEmail+"/info").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    userDetails details=snapshot.getValue(userDetails.class);
                     database.child("Users/"+ownerEmail+"/info").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             Integer value=snapshot.child("following").getValue(Integer.class);
                             value++;
                             database.child("Users/"+ownerEmail+"/info/following").setValue(value);
-                            database.child("Users/"+ownerEmail+"/info/following").setValue(email);
                             database.child("Users/"+email+"/info").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     Integer value=snapshot.child("followers").getValue(Integer.class);
                                     value++;
                                     database.child("Users/"+email+"/info/followers").setValue(value);
-                                    database.child("Users/"+email+"/info/followers").setValue(ownerEmail);
+
                                 }
 
                                 @Override
@@ -108,13 +103,6 @@ public class DownloadUploadUtils {
                         }
                     });
 
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
     }
 
 }

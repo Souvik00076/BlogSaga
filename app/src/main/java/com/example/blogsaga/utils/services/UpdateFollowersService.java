@@ -18,7 +18,7 @@ public class UpdateFollowersService extends Service {
     private UpdateFollowersService.ServiceHandler serviceHandler;
     private static final String SERVICE_CLASS_TAG = UpdateFollowersService.class.getName().toString();
 
-    private static String modelobj;
+    private static String mail;
 
     private final class ServiceHandler extends Handler {
 
@@ -29,7 +29,7 @@ public class UpdateFollowersService extends Service {
         @Override
         public void handleMessage(@NonNull Message msg) {
             Log.i(SERVICE_CLASS_TAG, "Firebase user follower thread");
-            DownloadUploadUtils.updationFollowerFollowing(modelobj);
+            DownloadUploadUtils.updationFollowerFollowing(mail);
             stopSelf(msg.arg1);
         }
     }
@@ -47,7 +47,7 @@ public class UpdateFollowersService extends Service {
         Message msg=serviceHandler.obtainMessage();
         msg.arg1=startId;
         Log.e("Followers update service","started");
-        modelobj=intent.getParcelableExtra("Add followers following");
+        mail= intent.getStringExtra("EMAIL");
         serviceHandler.sendMessage(msg);
         return START_STICKY;
     }

@@ -25,6 +25,7 @@ import com.example.blogsaga.utils.adapters.TabAdapter;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
 import com.example.blogsaga.utils.models.userDetails;
 import com.example.blogsaga.utils.services.UpdateFollowersService;
+import com.example.blogsaga.utils.services.UploadArticleService;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -56,6 +57,7 @@ public class UserDetailsBySearch extends Fragment {
 
     public UserDetailsBySearch(String uniqueKey) {
         this.uniqueKey=uniqueKey;
+        System.out.println(uniqueKey+" is the email 60");
     }
 
     @Override
@@ -109,7 +111,9 @@ public class UserDetailsBySearch extends Fragment {
             public void onClick(View v) {
                 Intent upDateFolloDetails=new Intent(getActivity(), UpdateFollowersService.class);
                 upDateFolloDetails.putExtra("EMAIL", uniqueKey);
+                System.out.println("onclick"+uniqueKey);
                 requireActivity().startService(upDateFolloDetails);
+                System.out.println("onclick"+uniqueKey);
             }
 
         });
@@ -185,16 +189,15 @@ public class UserDetailsBySearch extends Fragment {
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
-        DatabaseReference followref=userRef.child("FollowDetails");
-        followref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ///this is done by Suraj
+        DatabaseReference followingref=userRef.child("following");
+        followingref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    userDetails followdetails=snapshot.getValue(userDetails.class);
+                    Integer followdetails=snapshot.getValue(Integer.class);
                     if (followdetails!=null){
-                        String follower=Integer.toString(followdetails.getFollowers());
-                        String following=Integer.toString(followdetails.getFollowing());
-                        followerNo.setText(follower);
+                        String following=Integer.toString(followdetails);
                         followingNo.setText(following);
                     }
                 }
@@ -205,6 +208,25 @@ public class UserDetailsBySearch extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Database Error", error.getMessage());
                 progressBar.setVisibility(View.GONE);
+            }
+        });
+        DatabaseReference followref=userRef.child("follower");
+        followref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Integer followdetails=snapshot.getValue(Integer.class);
+                    if (followdetails!=null){
+                        String follower=Integer.toString(followdetails);
+                        followerNo.setText(follower);
+                    }
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {

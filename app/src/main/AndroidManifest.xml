@@ -25,6 +25,9 @@
         <service
             android:name=".utils.services.UploadArticleService"
             android:exported="false" />
+        <service
+            android:name=".utils.services.UpdateFollowersService"
+            android:exported="false" />
     </application>
 
 </manifest>

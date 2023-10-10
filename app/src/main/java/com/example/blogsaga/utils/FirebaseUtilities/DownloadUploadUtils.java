@@ -87,6 +87,7 @@ public class DownloadUploadUtils {
                                     Integer value=snapshot.child("followers").getValue(Integer.class);
                                     value++;
                                     database.child("Users/"+email+"/info/followers").setValue(value);
+
                                 }
 
                                 @Override
@@ -101,6 +102,29 @@ public class DownloadUploadUtils {
 
                         }
                     });
+        database.child("Users/"+ownerEmail).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                database.child("Users/"+ownerEmail+"/following").push().setValue(email);
+                database.child("Users/"+email).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        database.child("Users/"+email+"/followers").push().setValue(ownerEmail);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

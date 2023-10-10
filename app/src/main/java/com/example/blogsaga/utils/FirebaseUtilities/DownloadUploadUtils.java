@@ -1,6 +1,5 @@
 package com.example.blogsaga.utils.FirebaseUtilities;
 
-import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -8,17 +7,14 @@ import androidx.annotation.NonNull;
 
 import com.example.blogsaga.utils.models.Articles;
 import com.example.blogsaga.utils.models.BaseArticle;
-import com.example.blogsaga.utils.models.User;
-import com.example.blogsaga.utils.models.UserToken;
 import com.example.blogsaga.utils.models.UserTokens;
+import com.example.blogsaga.utils.models.userDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -26,6 +22,7 @@ public class DownloadUploadUtils {
     private static UserTokens tokens = UserTokens.getInstance();
     private static FirebaseAuth auth = tokens.getAuth();
     private static DatabaseReference database = tokens.getDatabaseReference();
+    private static DatabaseReference followerReference= tokens.getDatabaseReference();
     private static int IMAGE_ID = 0;
 
     private static String generateUniqueKey() {
@@ -72,6 +69,16 @@ public class DownloadUploadUtils {
                     }
                 });
 
+    }
+
+    public static void updateFollower(userDetails follwerDetails){
+        final String email = auth.getCurrentUser().getEmail().replace(".", "");
+        followerReference.child("Users/"+email+"/info/FollowDetails/").setValue(follwerDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                System.out.println("Sucess fully updated");
+            }
+        });
     }
 
 }

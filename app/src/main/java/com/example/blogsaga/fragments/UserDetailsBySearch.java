@@ -1,5 +1,6 @@
 package com.example.blogsaga.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,13 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.blogsaga.MainActivity;
 import com.example.blogsaga.R;
 import com.example.blogsaga.utils.adapters.TabAdapter;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
 import com.example.blogsaga.utils.models.userDetails;
+import com.example.blogsaga.utils.services.UpdateFollowersService;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -36,17 +39,24 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class Profile extends Fragment {
-    public LinearLayout editbtn;
+public class UserDetailsBySearch extends Fragment {
+
+    public TextView followbtn;
+    FirebaseAuth auth=FirebaseAuth.getInstance();
     ShapeableImageView profile;
     GeneralCallbacks callbacks;
-
-    TextView UserName;
+    ProgressBar progressBar;
+    TextView UserName,Useremail;
     ImageView back;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
-    FirebaseAuth auth=FirebaseAuth.getInstance();
     private StorageReference imageRef;
+    String uniqueKey;
+    TextView followerNo,followingNo;
+
+    public UserDetailsBySearch(String uniqueKey) {
+        this.uniqueKey=uniqueKey;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,10 +67,9 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=inflater.inflate(R.layout.fragment_profile, container, false);
+        View root=inflater.inflate(R.layout.fragment_user_details_by_search, container, false);
         init(root);
-        String email = auth.getCurrentUser().getEmail().toString();
-        final String uniqueKey = email.replace(".", "");
+
         imageRef= FirebaseStorage.getInstance().getReference().child("Users/"+uniqueKey+"/info/dp.jpg");
         loadProfilePicture(uniqueKey);
         tabLayout.addTab(tabLayout.newTab().setText("Drafts"));
@@ -95,18 +104,26 @@ public class Profile extends Fragment {
             }
         });
 
-
-        editbtn.setOnClickListener(new View.OnClickListener() {
+        followbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                addFragment(new EditProfile());
+            public void onClick(View v) {
+                int follower=Integer.parseInt(followerNo.getText().toString());
+                int following=Integer.parseInt(followingNo.getText().toString());
+                follower+=1;
+                following+=1;
+                userDetails followDetails=new userDetails(follower,following);
+                Intent upDateFolloDetails=new Intent(getActivity(), UpdateFollowersService.class);
+                upDateFolloDetails.putExtra("Add follow Details", String.valueOf(followDetails));
+                Toast.makeText(getContext(), "Following updated", Toast.LENGTH_SHORT).show();
+                requireActivity().startService(upDateFolloDetails);
             }
         });
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                addFragment(new HomePage());
             }
         });
 
@@ -116,12 +133,16 @@ public class Profile extends Fragment {
 
 
     private void init(final View root) {
-        editbtn = root.findViewById(R.id.edit_btn);
+        followbtn = root.findViewById(R.id.follow_btn);
         tabLayout = root.findViewById(R.id.tab_layout);
         viewPager2 = root.findViewById(R.id.viewPager2);
         profile=root.findViewById(R.id.profile_pic);
-        back=root.findViewById(R.id.back_button);
+        back=root.findViewById(R.id.back_button_Usv);
         UserName=root.findViewById(R.id.User_name);
+        Useremail=root.findViewById(R.id.userEmailTv);
+        progressBar=root.findViewById(R.id.progressBar_Usv);
+        followerNo=root.findViewById(R.id.follower_no);
+        followingNo=root.findViewById(R.id.following_no);
         callbacks=new GeneralCallbacks() {
             @Override
             public void onSignUp(boolean flag, int errorCode) {
@@ -139,6 +160,7 @@ public class Profile extends Fragment {
                 UserName.setText(name);
             }
         };
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     public void addFragment(Fragment fragment) {
@@ -162,29 +184,54 @@ public class Profile extends Fragment {
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors when loading the profile picture
                 Log.e("Load Profile Picture", "Failed: " + exception.getMessage());
+                progressBar.setVisibility(View.GONE);
             }
         });
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
-        String userID= auth.getUid();
+        DatabaseReference followref=userRef.child("FollowDetails");
+        followref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    userDetails followdetails=snapshot.getValue(userDetails.class);
+                    if (followdetails!=null){
+                        String follower=Integer.toString(followdetails.getFollowers());
+                        String following=Integer.toString(followdetails.getFollowing());
+                        followerNo.setText(follower);
+                        followingNo.setText(following);
+                    }
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Database Error", error.getMessage());
+                progressBar.setVisibility(View.GONE);
+            }
+        });
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     userDetails details=snapshot.getValue(userDetails.class);
                     if(details!=null){
-                       String user=details.getName();
-                       UserName.setText(user);
+                        String user=details.getName();
+                        UserName.setText(user);
+                        Useremail.setText(details.getEmail());
                     }
                 }
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Database Error", error.getMessage());
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
-
+                    //by Suraj
 }

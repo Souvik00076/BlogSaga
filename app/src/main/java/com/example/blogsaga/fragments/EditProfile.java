@@ -143,7 +143,6 @@ public class EditProfile extends Fragment {
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
-        String userID= auth.getUid();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -197,8 +196,6 @@ public class EditProfile extends Fragment {
                 String country=details.getCountry();
                 String email=details.getEmail();
                 String dob=details.getDob();
-
-                //TODO - Set the details here..by calling setter methods
                 nameEt.setText(name);
                 emailEt.setText(email);
                 phoneEt.setText(phone);

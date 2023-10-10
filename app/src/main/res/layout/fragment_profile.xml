@@ -7,6 +7,14 @@
     tools:context=".fragments.Profile"
     android:background="@drawable/back_app">
 
+    <ProgressBar
+        android:id="@+id/progressBar_Pv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:background="@drawable/design_search_widgets"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/back_button"

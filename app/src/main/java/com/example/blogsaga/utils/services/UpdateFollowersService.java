@@ -11,7 +11,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.blogsaga.utils.FirebaseUtilities.DownloadUploadUtils;
-import com.example.blogsaga.utils.models.userDetails;
 
 public class UpdateFollowersService extends Service {
 
@@ -19,7 +18,7 @@ public class UpdateFollowersService extends Service {
     private UpdateFollowersService.ServiceHandler serviceHandler;
     private static final String SERVICE_CLASS_TAG = UpdateFollowersService.class.getName().toString();
 
-    private static userDetails modelobj;
+    private static String modelobj;
 
     private final class ServiceHandler extends Handler {
 
@@ -30,7 +29,7 @@ public class UpdateFollowersService extends Service {
         @Override
         public void handleMessage(@NonNull Message msg) {
             Log.i(SERVICE_CLASS_TAG, "Firebase user follower thread");
-            DownloadUploadUtils.updateFollower(modelobj);
+            DownloadUploadUtils.updationFollowerFollowing(modelobj);
             stopSelf(msg.arg1);
         }
     }
@@ -48,7 +47,7 @@ public class UpdateFollowersService extends Service {
         Message msg=serviceHandler.obtainMessage();
         msg.arg1=startId;
         Log.e("Followers update service","started");
-        modelobj=(userDetails) intent.getParcelableExtra("Add followers details");
+        modelobj=intent.getParcelableExtra("Add followers following");
         serviceHandler.sendMessage(msg);
         return START_STICKY;
     }

@@ -25,6 +25,7 @@ import com.example.blogsaga.utils.adapters.TabAdapter;
 import com.example.blogsaga.utils.callbacks.GeneralCallbacks;
 import com.example.blogsaga.utils.models.userDetails;
 import com.example.blogsaga.utils.services.UpdateFollowersService;
+import com.example.blogsaga.utils.services.UploadArticleService;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -107,16 +108,11 @@ public class UserDetailsBySearch extends Fragment {
         followbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int follower=Integer.parseInt(followerNo.getText().toString());
-                int following=Integer.parseInt(followingNo.getText().toString());
-                follower+=1;
-                following+=1;
-                /*
-                Intent upDateFolloDetails=new Intent(getActivity(), UpdateFollowersService.class);
-                upDateFolloDetails.putExtra("Add follow Details", String.valueOf(followDetails));
-                Toast.makeText(getContext(), "Following updated", Toast.LENGTH_SHORT).show();
-                requireActivity().startService(upDateFolloDetails);
-                */
+                Intent upDatefollowerfollowingIntent = new Intent(getActivity(), UpdateFollowersService.class);
+                upDatefollowerfollowingIntent.putExtra("Add Article", uniqueKey);
+                Log.i("follow Button","Clicked");
+                Toast.makeText(getContext(), "Following is updated ", Toast.LENGTH_SHORT).show();
+                requireActivity().startService(upDatefollowerfollowingIntent);
             }
 
         });
@@ -192,16 +188,15 @@ public class UserDetailsBySearch extends Fragment {
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
-        DatabaseReference followref=userRef.child("FollowDetails");
+        ///this is done by Suraj
+        DatabaseReference followref=userRef.child("following");
         followref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    userDetails followdetails=snapshot.getValue(userDetails.class);
-                    if (followdetails!=null){
-                        String follower=Integer.toString(followdetails.getFollowers());
-                        String following=Integer.toString(followdetails.getFollowing());
-                        followerNo.setText(follower);
+                    int followdetails=snapshot.getValue(Integer.class);
+                    if (followdetails!=0){
+                        String following=Integer.toString(followdetails);
                         followingNo.setText(following);
                     }
                 }
@@ -212,6 +207,25 @@ public class UserDetailsBySearch extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Database Error", error.getMessage());
                 progressBar.setVisibility(View.GONE);
+            }
+        });
+        followref=userRef.child("follower");
+        followref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Integer followdetails=snapshot.getValue(Integer.class);
+                    if (followdetails!=null){
+                        String follower=Integer.toString(followdetails);
+                        followerNo.setText(follower);
+                    }
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {

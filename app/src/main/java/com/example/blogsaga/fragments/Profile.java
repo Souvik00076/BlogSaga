@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.blogsaga.MainActivity;
@@ -40,6 +41,7 @@ public class Profile extends Fragment {
     public LinearLayout editbtn;
     ShapeableImageView profile;
     GeneralCallbacks callbacks;
+    ProgressBar progressBar;
 
     TextView UserName;
     ImageView back;
@@ -47,7 +49,7 @@ public class Profile extends Fragment {
     private ViewPager2 viewPager2;
     FirebaseAuth auth=FirebaseAuth.getInstance();
     private StorageReference imageRef;
-
+    TextView followerNo,followingNo;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +108,7 @@ public class Profile extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                addFragment(new HomePage());
             }
         });
 
@@ -121,6 +123,9 @@ public class Profile extends Fragment {
         viewPager2 = root.findViewById(R.id.viewPager2);
         profile=root.findViewById(R.id.profile_pic);
         back=root.findViewById(R.id.back_button);
+        followerNo=root.findViewById(R.id.follower_no);
+        followingNo=root.findViewById(R.id.following_no);
+        progressBar=root.findViewById(R.id.progressBar_Pv);
         UserName=root.findViewById(R.id.User_name);
         callbacks=new GeneralCallbacks() {
             @Override
@@ -167,6 +172,46 @@ public class Profile extends Fragment {
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
+        ///this is done by Suraj
+        DatabaseReference followingref=userRef.child("following");
+        followingref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Integer followdetails=snapshot.getValue(Integer.class);
+                    if (followdetails!=null){
+                        String following=Integer.toString(followdetails);
+                        followingNo.setText(following);
+                    }
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Database Error", error.getMessage());
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+        DatabaseReference followref=userRef.child("follower");
+        followref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Integer followdetails=snapshot.getValue(Integer.class);
+                    if (followdetails!=null){
+                        String follower=Integer.toString(followdetails);
+                        followerNo.setText(follower);
+                    }
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         String userID= auth.getUid();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

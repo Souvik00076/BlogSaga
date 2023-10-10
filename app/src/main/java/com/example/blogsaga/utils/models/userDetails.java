@@ -2,18 +2,12 @@ package com.example.blogsaga.utils.models;
 
 public class userDetails {
     public String email,name,phone,country,dob;
-    public int followers=0,following=0;
+    public int followers,following;
     public userDetails(){
-
-    }
-
-    public userDetails(int followers,int following){
-        this.following=following;
-        this.followers=followers;
-
     }
 
     public userDetails(String email, String name) {
+        followers=following=0;
         this.email = email;
         this.name = name;
     }

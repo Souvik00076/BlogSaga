@@ -14,7 +14,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -22,7 +25,6 @@ public class DownloadUploadUtils {
     private static UserTokens tokens = UserTokens.getInstance();
     private static FirebaseAuth auth = tokens.getAuth();
     private static DatabaseReference database = tokens.getDatabaseReference();
-    private static DatabaseReference followerReference= tokens.getDatabaseReference();
     private static int IMAGE_ID = 0;
 
     private static String generateUniqueKey() {
@@ -71,14 +73,46 @@ public class DownloadUploadUtils {
 
     }
 
-    public static void updateFollower(userDetails follwerDetails){
-        final String email = auth.getCurrentUser().getEmail().replace(".", "");
-        followerReference.child("Users/"+email+"/info/FollowDetails/").setValue(follwerDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                System.out.println("Sucess fully updated");
-            }
-        });
+    public static void updationFollowerFollowing(final String email){
+       final String ownerEmail=auth.getCurrentUser().getEmail().replace(".","");
+            database.child("Users/"+ownerEmail+"/info").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    userDetails details=snapshot.getValue(userDetails.class);
+                    database.child("Users/"+ownerEmail+"/info").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Integer value=snapshot.child("following").getValue(Integer.class);
+                            value++;
+                            database.child("Users/"+ownerEmail+"/info/following").setValue(value);
+                            database.child("Users/"+email+"/info").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Integer value=snapshot.child("followers").getValue(Integer.class);
+                                    value++;
+                                    database.child("Users/"+ownerEmail+"/info/followers").setValue(value);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
     }
 
 }

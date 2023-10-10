@@ -111,12 +111,14 @@ public class UserDetailsBySearch extends Fragment {
                 int following=Integer.parseInt(followingNo.getText().toString());
                 follower+=1;
                 following+=1;
-                userDetails followDetails=new userDetails(follower,following);
+                /*
                 Intent upDateFolloDetails=new Intent(getActivity(), UpdateFollowersService.class);
                 upDateFolloDetails.putExtra("Add follow Details", String.valueOf(followDetails));
                 Toast.makeText(getContext(), "Following updated", Toast.LENGTH_SHORT).show();
                 requireActivity().startService(upDateFolloDetails);
+                */
             }
+
         });
 
 

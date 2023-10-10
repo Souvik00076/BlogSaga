@@ -7,6 +7,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.UserDetailsBySearch">
 
+    <ProgressBar
+        android:id="@+id/progressBar_Usv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:background="@drawable/design_search_widgets"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/back_button_Usv"
         android:layout_width="@dimen/_32dp"
@@ -29,7 +38,6 @@
         android:layout_marginTop="@dimen/_24dp"
         android:layout_marginStart="@dimen/_12dp"
         />
-
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_pic"
@@ -60,26 +68,21 @@
         android:textSize="@dimen/_24sp" />
 
     <!--    linear layout for the edit button-->
-    <LinearLayout
-        android:id="@+id/edit_btn"
-        android:layout_width="@dimen/_96dp"
-        android:layout_height="@dimen/_40dp"
-        android:orientation="horizontal"
-        android:layout_below="@+id/userEmailTv"
-        android:layout_marginStart="@dimen/_12dp"
-        android:layout_marginTop="@dimen/_32dp"
-        android:layout_toRightOf="@+id/User_name"
-        android:gravity="center"
-        android:background="@drawable/design_widget_et"
-        >
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/follow_btn"
+            android:layout_width="@dimen/_96dp"
+            android:layout_height="@dimen/_40dp"
             android:text="follow"
             android:textColor="@color/brown"
             android:fontFamily="@font/oleoscript_bold"
+            android:background="@drawable/design_widget_et"
+            android:gravity="center"
+            android:layout_below="@+id/userEmailTv"
+            android:layout_marginStart="@dimen/_12dp"
+            android:layout_marginTop="@dimen/_32dp"
+            android:layout_toRightOf="@+id/User_name"
             android:textSize="@dimen/_19sp"/>
-    </LinearLayout>
 
     <View
         android:id="@+id/horizontal_part1"
@@ -141,8 +144,10 @@
             android:layout_marginHorizontal="@dimen/_40dp"
             android:layout_marginTop="@dimen/_12dp"
             android:layout_toEndOf="@+id/vertical_part1"
+            android:layout_toStartOf="@+id/vertical_part2"
+            android:gravity="center"
             android:fontFamily="@font/oleoscript_regular"
-            android:text="125"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="@dimen/_24sp" />
 
@@ -173,11 +178,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:gravity="center"
             android:layout_marginHorizontal="@dimen/_40dp"
             android:layout_marginTop="@dimen/_12dp"
             android:layout_toEndOf="@+id/vertical_part2"
             android:fontFamily="@font/oleoscript_regular"
-            android:text="125"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="@dimen/_24sp" />
 

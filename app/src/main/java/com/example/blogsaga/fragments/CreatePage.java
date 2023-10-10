@@ -128,7 +128,6 @@ public class CreatePage extends Fragment {
                 Log.i("Save Button","Clicked");
                 Toast.makeText(getContext(), "Article is Published", Toast.LENGTH_SHORT).show();
                 requireActivity().startService(uploadArticleServiceIntent);
-                ;
             }
         });
 

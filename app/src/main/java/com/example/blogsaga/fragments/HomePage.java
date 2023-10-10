@@ -107,7 +107,7 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
         recentRv=view.findViewById(R.id.recent_Recyclerview);
 //        notificationbtn = view.findViewById(R.id.notification);
         bookmarkbtn = view.findViewById(R.id.bookmark);
-        ownAdapter = new UpdateArticlesAdapter(dataset);
+        ownAdapter = new UpdateArticlesAdapter();
         recentAdapter=new UpdateRecentAdapter(dataset,20);
         token = UserTokens.getInstance();
         LayoutManager = new LinearLayoutManager(getContext());
@@ -134,6 +134,8 @@ public class HomePage extends Fragment implements RecyclerCallbacks {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 System.out.println("This guy got called 120");
                                 Articles article = snapshot.getValue(Articles.class);
+                                System.out.println("This guy got called 137");
+
                                 if(article!=null) {
                                     ownAdapter.setData(article);
                                     System.out.println(article.getImageUri()+" 125");

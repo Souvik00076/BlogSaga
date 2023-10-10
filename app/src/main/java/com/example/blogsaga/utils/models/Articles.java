@@ -13,22 +13,35 @@ public class Articles implements Parcelable {
     private String description;
     private String ID;
     private byte[] imageBytes;
-    public Articles(){}
+    public Articles(){
+        System.out.println("default");
+    }
+
+    public Articles(String imageUri, String title, String description, String ID, byte[] imageBytes) {
+        this.imageUri = imageUri;
+        this.title = title;
+        this.description = description;
+        this.ID = ID;
+        this.imageBytes = imageBytes;
+    }
 
     public Articles(String imageUri, String title, String description) {
         this.imageUri = imageUri;
         this.title = title;
         this.description = description;
+        System.out.println("default 1"+imageUri);
     }
 
     public Articles(byte[] imageBytes, String title, String description) {
         this.imageBytes = imageBytes;
         this.title = title;
         this.description = description;
+        System.out.println("default 2");
+
     }
 
     protected Articles(Parcel in) {
-        imageUri = in.readParcelable(Uri.class.getClassLoader());
+        imageUri = in.readString();
         title = in.readString();
         description = in.readString();
         ID = in.readString();

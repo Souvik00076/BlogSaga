@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
@@ -30,8 +31,9 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
 
     private ArrayList<Articles> dataSet;
 
-    public UpdateArticlesAdapter(ArrayList<Articles> dataSet) {
-        this.dataSet = dataSet;
+
+    public UpdateArticlesAdapter() {
+        this.dataSet = new ArrayList<>();
     }
 
     @NonNull
@@ -43,6 +45,7 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
 
     @Override
     public void onBindViewHolder(@NonNull ArticleHolder holder, int position) {
+
         holder.bind(dataSet.get(position));
     }
 
@@ -52,7 +55,10 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
     }
 
     public void setData(Articles articles) {
-        dataSet.add(articles);
+        System.out.println(articles.getImageUri()+" 65");
+        Articles articles1=new Articles(articles.getImageUri(), articles.getTitle(),articles.getDescription());
+        dataSet.add(articles1);
+        System.out.println(articles1.getImageUri()+" 59");
     }
 
 
@@ -71,13 +77,14 @@ public class UpdateArticlesAdapter extends RecyclerView.Adapter<UpdateArticlesAd
 
         public void bind(final Articles articles) {
             aTitle.setText(articles.getTitle());
+            System.out.println(articles.getImageUri()+" 79");
             String path = "Users/" + UserTokens.getInstance().
                     getAuth().getCurrentUser().
                     getEmail().
                     replace(".", "") +
-                    "/articles/images/" + articles.getImageUri() + "/";
+                    "/articles/images/" + articles.getImageUri() + "/my-image.jpg";
             System.out.println(articles.getImageUri());
-            StorageReference storageReference = UserTokens.getInstance().getImageReference().child(path);
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(path);
             storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {

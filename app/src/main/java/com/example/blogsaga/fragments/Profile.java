@@ -172,6 +172,7 @@ public class Profile extends Fragment {
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
+
         ///this is done by Suraj
         DatabaseReference followingref=userRef.child("following");
         followingref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -212,7 +213,6 @@ public class Profile extends Fragment {
 
             }
         });
-        String userID= auth.getUid();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

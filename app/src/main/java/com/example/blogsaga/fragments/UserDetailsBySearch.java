@@ -57,6 +57,7 @@ public class UserDetailsBySearch extends Fragment {
 
     public UserDetailsBySearch(String uniqueKey) {
         this.uniqueKey=uniqueKey;
+        System.out.println(uniqueKey+" is the email 60");
     }
 
     @Override
@@ -110,7 +111,9 @@ public class UserDetailsBySearch extends Fragment {
             public void onClick(View v) {
                 Intent upDateFolloDetails=new Intent(getActivity(), UpdateFollowersService.class);
                 upDateFolloDetails.putExtra("EMAIL", uniqueKey);
+                System.out.println("onclick"+uniqueKey);
                 requireActivity().startService(upDateFolloDetails);
+                System.out.println("onclick"+uniqueKey);
             }
 
         });
@@ -187,13 +190,13 @@ public class UserDetailsBySearch extends Fragment {
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef=databaseReference.child("Users/"+key+"/info");
         ///this is done by Suraj
-        DatabaseReference followref=userRef.child("following");
-        followref.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference followingref=userRef.child("following");
+        followingref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    int followdetails=snapshot.getValue(Integer.class);
-                    if (followdetails!=0){
+                    Integer followdetails=snapshot.getValue(Integer.class);
+                    if (followdetails!=null){
                         String following=Integer.toString(followdetails);
                         followingNo.setText(following);
                     }
@@ -207,7 +210,7 @@ public class UserDetailsBySearch extends Fragment {
                 progressBar.setVisibility(View.GONE);
             }
         });
-        followref=userRef.child("follower");
+        DatabaseReference followref=userRef.child("follower");
         followref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

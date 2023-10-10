@@ -107,16 +107,9 @@ public class UserDetailsBySearch extends Fragment {
         followbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int follower=Integer.parseInt(followerNo.getText().toString());
-                int following=Integer.parseInt(followingNo.getText().toString());
-                follower+=1;
-                following+=1;
-                /*
                 Intent upDateFolloDetails=new Intent(getActivity(), UpdateFollowersService.class);
-                upDateFolloDetails.putExtra("Add follow Details", String.valueOf(followDetails));
-                Toast.makeText(getContext(), "Following updated", Toast.LENGTH_SHORT).show();
+                upDateFolloDetails.putExtra("EMAIL", uniqueKey);
                 requireActivity().startService(upDateFolloDetails);
-                */
             }
 
         });
